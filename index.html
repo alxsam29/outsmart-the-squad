@@ -1,36 +1,49 @@
 <!DOCTYPE html>
-<html lang="ro" class="dark scroll-smooth">
+<html lang="ro" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OUTSMART THE SQUAD — Financial Health Project | Bright Minds Craiova</title>
+  <title>OUTSMART THE SQUAD — Experiență de Sănătate Financiară | Bright Minds Craiova</title>
   
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            surface: {
-              DEFAULT: '#0A0C10',
-              subtle: '#12151D',
-              card: '#161A24',
-              border: 'rgba(255, 255, 255, 0.08)',
-              hover: 'rgba(255, 255, 255, 0.04)'
-            },
-            accent: {
-              emerald: '#10B981',
-              cyan: '#06B6D4',
-              violet: '#8B5CF6',
-              amber: '#F59E0B',
-              rose: '#F43F5E'
+            brand: {
+              50: '#F0FDF4',
+              100: '#DCFCE7',
+              500: '#10B981',
+              600: '#059669',
+              indigo: '#4F46E5',
+              violet: '#7C3AED',
+              coral: '#F43F5E',
+              dark: '#0F172A',
+              slate: '#1E293B',
+              surface: '#F8FAFC',
+              card: '#FFFFFF'
             }
           },
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          animation: {
+            'float-slow': 'float 6s ease-in-out infinite',
+            'float-fast': 'float 4s ease-in-out infinite reverse',
+            'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            pulseSubtle: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0.6' },
+            }
           }
         }
       }
@@ -40,7 +53,7 @@
   <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -49,689 +62,810 @@
 
   <style>
     body {
-      background-color: #0A0C10;
-      color: #E2E8F0;
+      background-color: #F8FAFC;
+      color: #0F172A;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
     }
-    
-    /* Clean linear subtle grid */
-    .bg-grid {
-      background-size: 40px 40px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+
+    /* Ambient dynamic gradient backdrop */
+    .hero-glow-1 {
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+    .hero-glow-2 {
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
     }
 
-    .border-subtle {
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Soft modern glass card for light/slate UI */
+    .clean-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    
-    .border-subtle-hover:hover {
-      border-color: rgba(255, 255, 255, 0.18);
-      transition: border-color 0.2s ease;
-    }
-
-    /* Metal holo card reflection */
-    .holo-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.7);
+    .clean-card:hover {
+      box-shadow: 0 16px 32px -4px rgba(15, 23, 42, 0.1);
+      transform: translateY(-3px);
+      border-color: #CBD5E1;
     }
 
-    /* Tab active styles */
-    .tab-btn.active {
-      background-color: rgba(255, 255, 255, 0.08);
-      color: #FFFFFF;
-      border-color: rgba(255, 255, 255, 0.16);
+    /* 3D Bank/Asertivity Card */
+    .bank-card-3d {
+      background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #0F172A 100%);
+      box-shadow: 0 25px 50px -12px rgba(49, 46, 129, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Range slider custom styling */
+    input[type=range] {
+      accent-color: #10B981;
     }
   </style>
 </head>
-<body class="bg-grid antialiased">
+<body class="selection:bg-emerald-500 selection:text-white">
 
-  <!-- NAVBAR: Minimalist Linear Style -->
-  <header class="sticky top-0 z-50 bg-[#0A0C10]/80 backdrop-blur-md border-b border-white/[0.06] px-6 py-3.5">
+  <!-- TOP ANNOUNCEMENT BANNER -->
+  <div class="bg-gradient-to-r from-brand-indigo via-brand-violet to-emerald-600 text-white text-[11px] sm:text-xs font-semibold py-2 px-4 text-center tracking-wide flex items-center justify-center gap-2">
+    <span class="bg-white/20 px-2 py-0.5 rounded-full text-[10px] uppercase font-mono tracking-wider">Craiova</span>
+    <span>Proiect de Inovație Financiară pentru Podiul Național • Echipa Bright Minds</span>
+    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-4 sm:px-8 py-3.5">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       
       <!-- Brand -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-8 h-8 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center font-mono font-bold text-white text-xs group-hover:bg-white group-hover:text-black transition">
-          BM
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-indigo to-emerald-500 flex items-center justify-center font-bold text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition">
+          <i data-lucide="zap" class="w-5 h-5 fill-current"></i>
         </div>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-2">
-            <span class="font-bold text-sm tracking-tight text-white">OUTSMART THE SQUAD</span>
-            <span class="text-[10px] font-mono uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded">CRAIOVA</span>
+        <div>
+          <div class="font-extrabold text-sm sm:text-base tracking-tight text-slate-900 flex items-center gap-2">
+            OUTSMART THE SQUAD
           </div>
-          <span class="text-[11px] text-gray-400">Team Bright Minds • Competiție Finanțe 2026</span>
+          <div class="text-[11px] font-medium text-slate-500 hidden sm:block">Liceul din Craiova • Soluție Anti-FOMO</div>
         </div>
       </a>
 
-      <!-- Quick Nav -->
-      <nav class="hidden md:flex items-center gap-1 bg-surface-subtle p-1 rounded-xl border border-white/[0.06] text-xs font-medium text-gray-400">
-        <button onclick="switchTab('dilema')" class="nav-link px-3.5 py-1.5 rounded-lg hover:text-white transition">Problema Reală</button>
-        <button onclick="switchTab('solutie')" class="nav-link px-3.5 py-1.5 rounded-lg hover:text-white transition">Experiența Imersivă</button>
-        <button onclick="switchTab('simulator')" class="nav-link px-3.5 py-1.5 rounded-lg text-emerald-400 hover:text-emerald-300 font-semibold transition flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Simulator
-        </button>
-        <button onclick="switchTab('buget')" class="nav-link px-3.5 py-1.5 rounded-lg hover:text-white transition">Buget 5.000€</button>
-        <button onclick="switchTab('validare')" class="nav-link px-3.5 py-1.5 rounded-lg hover:text-white transition">Validare & Plan B</button>
-        <button onclick="switchTab('echipa')" class="nav-link px-3.5 py-1.5 rounded-lg hover:text-white transition">Echipa</button>
+      <!-- Navigation links (Desktop) -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-semibold text-slate-600">
+        <a href="#dilema" class="hover:text-brand-indigo transition">Dilema Craiova</a>
+        <a href="#experienta" class="hover:text-brand-indigo transition">Experiența Imersivă</a>
+        <a href="#simulator" class="text-emerald-600 hover:text-emerald-700 transition flex items-center gap-1.5 font-bold">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          Simulator Interactiv
+        </a>
+        <a href="#buget" class="hover:text-brand-indigo transition">Buget 5.000€</a>
+        <a href="#calculator" class="hover:text-brand-indigo transition">Calculator ROI</a>
+        <a href="#echipa" class="hover:text-brand-indigo transition">Echipa</a>
       </nav>
 
-      <!-- CTA -->
-      <div class="flex items-center gap-3">
-        <a href="https://github.com/alxsam29/outsmart-the-squad" target="_blank" class="hidden sm:inline-flex items-center gap-2 text-xs font-mono text-gray-400 hover:text-white transition border border-white/[0.08] px-3 py-1.5 rounded-lg hover:border-white/20">
-          <i data-lucide="github" class="w-3.5 h-3.5"></i> GitHub Repo
+      <!-- Action Button -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="#simulator" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-md shadow-slate-900/10 flex items-center gap-2 active:scale-95">
+          <i data-lucide="play" class="w-3.5 h-3.5 fill-current text-emerald-400"></i>
+          <span>Joacă Simulatorul</span>
         </a>
-        <button onclick="switchTab('simulator'); document.getElementById('main-content').scrollIntoView({behavior:'smooth'});" class="bg-white hover:bg-gray-100 text-gray-950 font-semibold text-xs px-4 py-2 rounded-lg transition flex items-center gap-1.5 shadow-sm">
-          <span>Testează Prototipul</span>
-          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-        </button>
       </div>
 
     </div>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="relative pt-20 pb-16 px-6 max-w-6xl mx-auto">
-    <div class="flex flex-col items-start max-w-4xl">
+  <section class="relative pt-12 pb-20 sm:pt-20 sm:pb-28 overflow-hidden">
+    <!-- Ambient glowing spheres -->
+    <div class="hero-glow-1 absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full pointer-events-none -z-10"></div>
+    <div class="hero-glow-2 absolute top-40 right-[-100px] w-[500px] h-[500px] rounded-full pointer-events-none -z-10"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
       
-      <!-- Pill Badge -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 mb-6">
-        <span class="text-emerald-400 font-bold">●</span> Proiect de Sănătate Financiară • Faza Națională
+      <!-- Top Pill -->
+      <div class="inline-flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 text-xs font-bold text-slate-700 shadow-sm mb-6 animate-float-slow">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span>Competiție Națională de Educație Financiară 2026</span>
+        <span class="text-slate-300">|</span>
+        <span class="text-brand-indigo font-mono">5.000 € MAX BUDGET</span>
       </div>
 
-      <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
-        Banii tăi nu sunt biletul tău de intrare în gașcă.
+      <!-- Main Headline with Gradient -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-950 leading-[1.1] mb-6 max-w-4xl mx-auto">
+        Banii tăi nu sunt biletul tău de <span class="bg-gradient-to-r from-brand-indigo via-purple-600 to-emerald-500 bg-clip-text text-transparent">intrare în gașcă</span>.
       </h1>
 
       <!-- Subheadline -->
-      <p class="text-lg sm:text-xl text-gray-400 font-normal leading-relaxed mb-8 max-w-3xl">
-        Majoritatea tinerilor nu au nevoie de încă o teorie despre dobânda compusă. Au nevoie să învețe cum să oprească <span class="text-white font-medium">„taxa invizibilă a conformismului”</span>: presiunea de a cheltui în fiecare pauză la gardul liceului sau la mall doar pentru a nu fi excluși din cerc.
+      <p class="text-base sm:text-xl text-slate-600 font-normal leading-relaxed mb-10 max-w-2xl mx-auto">
+        Nu am creat un curs plictisitor cu formule. Am creat primul <strong>Escape Room & Simulator de Asertivitate Financiară</strong> testat în liceele din Craiova, care îi învață pe tineri să reziste presiunii de grup fără rușine.
       </p>
 
-      <!-- Key Metrics Row -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-3xl pt-4 border-t border-white/[0.08]">
-        <div>
-          <div class="text-2xl font-bold font-mono text-white tracking-tight">68%</div>
-          <div class="text-xs text-gray-400 mt-0.5">Liceeni pe ZERO în săptămâna 3</div>
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-16">
+        <a href="#simulator" class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold px-7 py-3.5 rounded-xl transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 active:scale-95">
+          <i data-lucide="gamepad-2" class="w-5 h-5"></i>
+          <span>Intră în Simulator (Live Demo)</span>
+        </a>
+        <a href="#experienta" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-800 font-bold px-7 py-3.5 rounded-xl transition border border-slate-200 shadow-sm flex items-center justify-center gap-2">
+          <i data-lucide="eye" class="w-5 h-5 text-brand-indigo"></i>
+          <span>Descoperă Experiența Fizică</span>
+        </a>
+      </div>
+
+      <!-- KEY STATS BANNER (Interactive Hover Cards) -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 max-w-5xl mx-auto">
+        <div class="clean-card p-5 rounded-2xl text-left border-l-4 border-l-brand-coral">
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900">68%</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-800 mt-1">Faliment în Ziua 18</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Liceeni pe ZERO cu 10 zile înainte de alocație</div>
         </div>
-        <div>
-          <div class="text-2xl font-bold font-mono text-white tracking-tight">30 LEI</div>
-          <div class="text-xs text-gray-400 mt-0.5">Irosiți zilnic pe mâncare de impuls</div>
+
+        <div class="clean-card p-5 rounded-2xl text-left border-l-4 border-l-brand-indigo">
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900">30 LEI</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-800 mt-1">Taxa Socială Zilnică</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Comenzi de fast-food la gard & ice coffee</div>
         </div>
-        <div>
-          <div class="text-2xl font-bold font-mono text-emerald-400 tracking-tight">5.000 €</div>
-          <div class="text-xs text-gray-400 mt-0.5">Buget riguros cu 14% fond rezervă</div>
+
+        <div class="clean-card p-5 rounded-2xl text-left border-l-4 border-l-emerald-500">
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-emerald-600">5.000 €</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-800 mt-1">Buget Strict Alocat</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Include 14% fond de rezervă pentru Plan B</div>
         </div>
-        <div>
-          <div class="text-2xl font-bold font-mono text-accent-cyan tracking-tight">100+</div>
-          <div class="text-xs text-gray-400 mt-0.5">Elevi antrenați în testul pilot</div>
+
+        <div class="clean-card p-5 rounded-2xl text-left border-l-4 border-l-purple-500">
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono text-slate-900">100+</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-800 mt-1">Elevi Antrenați</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">În faza pilot de 5 zile din Craiova</div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- INTERACTIVE SECTION TABS NAVIGATION -->
-  <section id="main-content" class="sticky top-[58px] z-40 bg-[#0A0C10]/95 backdrop-blur-md border-y border-white/[0.06] py-3 px-6">
-    <div class="max-w-6xl mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar">
-      <button onclick="switchTab('dilema')" id="tab-dilema" class="tab-btn active px-4 py-2 rounded-lg text-xs font-semibold border border-white/[0.08] transition whitespace-nowrap flex items-center gap-2">
-        <i data-lucide="search" class="w-3.5 h-3.5"></i> 1. Dilema & Studiul Craiova
-      </button>
-      <button onclick="switchTab('solutie')" id="tab-solutie" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white border border-transparent transition whitespace-nowrap flex items-center gap-2">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> 2. Experiența Imersivă
-      </button>
-      <button onclick="switchTab('simulator')" id="tab-simulator" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white border border-transparent transition whitespace-nowrap flex items-center gap-2 text-emerald-400">
-        <i data-lucide="gamepad-2" class="w-3.5 h-3.5"></i> 3. Simulatorul Decizional (Prototip)
-      </button>
-      <button onclick="switchTab('buget')" id="tab-buget" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white border border-transparent transition whitespace-nowrap flex items-center gap-2">
-        <i data-lucide="receipt" class="w-3.5 h-3.5"></i> 4. Bugetul de 5.000 €
-      </button>
-      <button onclick="switchTab('validare')" id="tab-validare" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white border border-transparent transition whitespace-nowrap flex items-center gap-2">
-        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 5. Test Validare & Plan B
-      </button>
-      <button onclick="switchTab('echipa')" id="tab-echipa" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white border border-transparent transition whitespace-nowrap flex items-center gap-2">
-        <i data-lucide="users" class="w-3.5 h-3.5"></i> 6. Echipa Bright Minds
-      </button>
+  <!-- SECTIUNEA 1: DILEMA IN CRAIOVA (Relevanta 25%) -->
+  <section id="dilema" class="py-20 bg-slate-100/70 border-y border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="max-w-3xl mb-12">
+        <div class="inline-flex items-center gap-1.5 bg-brand-coral/10 text-brand-coral px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 font-mono">
+          <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i> Criteriu: Relevanța Problemei (25%)
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Dilema: Taxa invizibilă a apartenenței la gașcă
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+          Studiul Bright Minds derulat pe <strong>110 colegi din liceele din Craiova</strong> a scos la iveală adevărata problemă: tinerii nu cheltuiesc bani din lipsă de noțiuni economice, ci din <strong>frică de excludere socială</strong>.
+        </p>
+      </div>
+
+      <!-- 3 Real Scenarios Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        
+        <!-- Fenomenul 1 -->
+        <div class="clean-card p-6 rounded-3xl relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <i data-lucide="utensils" class="w-6 h-6"></i>
+          </div>
+          <div class="text-xs font-mono font-bold text-amber-600 uppercase">Punctul Critic #1</div>
+          <h3 class="text-lg font-bold text-slate-900 mt-1 mb-2">Comanda colectivă la gardul școlii</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+            În pauza de 20 de minute, cineva comandă shaorma/burgeri. Dacă spui că ai sendviș de acasă, ești etichetat ca zgârcit. Cedezi ca să rămâi „unul din băieți”.
+          </p>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-500">Cost săptămânal:</span>
+            <span class="font-bold text-brand-coral">120 - 150 LEI</span>
+          </div>
+        </div>
+
+        <!-- Fenomenul 2 -->
+        <div class="clean-card p-6 rounded-3xl relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-2xl bg-brand-indigo/10 text-brand-indigo flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <i data-lucide="coffee" class="w-6 h-6"></i>
+          </div>
+          <div class="text-xs font-mono font-bold text-brand-indigo uppercase">Punctul Critic #2</div>
+          <h3 class="text-lg font-bold text-slate-900 mt-1 mb-2">Social Drinking & Energizante</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+            Paharul de ice coffee, bubble tea sau doza de energizant cumpărată zilnic funcționează ca un bilet de statut ținut în mână pe holul liceului.
+          </p>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-500">Cost săptămânal:</span>
+            <span class="font-bold text-brand-coral">70 - 100 LEI</span>
+          </div>
+        </div>
+
+        <!-- Fenomenul 3 -->
+        <div class="clean-card p-6 rounded-3xl relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition">
+            <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          </div>
+          <div class="text-xs font-mono font-bold text-purple-600 uppercase">Punctul Critic #3</div>
+          <h3 class="text-lg font-bold text-slate-900 mt-1 mb-2">Vineri la Electroputere Mall</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+            Ieșirea clasică după ore. Fast food la food court + bilet cinema + haine luate „la impuls de reducere”. Banii pe 2 săptămâni dispar în 3 ore.
+          </p>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-500">Cost per vineri:</span>
+            <span class="font-bold text-brand-coral">80 - 120 LEI</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Real Quotes from School Survey -->
+      <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200">
+        <div class="text-xs font-mono font-bold text-slate-400 uppercase mb-4 tracking-wider">
+          Vocea colegilor noștri (Extrase directe din sondajul Bright Minds):
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700 italic">
+            „E penibil să stai cu un măr de acasă când toți împart pizza de 40 de lei. Prefer să rămân fără bani de autobuz decât să mă simt ciudat.”
+            <div class="mt-2 font-bold font-sans not-italic text-slate-900">— Elev, clasa a XI-a</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700 italic">
+            „Părinții îmi dau 150 de lei pe săptămână. Miercuri deja nu mai am nimic și nu știu pe ce s-au dus, cred că pe cafele și sucuri în pauze.”
+            <div class="mt-2 font-bold font-sans not-italic text-slate-900">— Elevă, clasa a X-a</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700 italic">
+            „Dacă ar exista o metodă să refuz ieșirile fără să mă sune toți să mă întrebe dacă m-am călugărit, aș economisi 400 de lei pe lună.”
+            <div class="mt-2 font-bold font-sans not-italic text-slate-900">— Elev, clasa a XII-a</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- TAB PANELS CONTAINER -->
-  <main class="max-w-6xl mx-auto px-6 py-12">
-
-    <!-- PANEL 1: DILEMA & CERCETAREA LOCALA -->
-    <div id="panel-dilema" class="tab-panel">
-      <div class="mb-8">
-        <span class="text-xs font-mono uppercase tracking-wider text-accent-cyan">Criteriu Jurizare: Relevanța Problemei (25%)</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Dilema: Taxa invizibilă a apartenenței</h2>
-        <p class="text-gray-400 text-sm sm:text-base mt-2 max-w-3xl">
-          Am chestionat 110 colegi din licee din Craiova. Problema fundamentală nu este lipsa informației teoretice, ci blocajul emoțional: teama de a fi etichetat ca „zgârcit” sau „fără bani” în cercul de prieteni.
+  <!-- SECTIUNEA 2: CUM FUNCTIONEAZA EXPERIENTA FIZICA -->
+  <section id="experienta" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-1.5 bg-brand-indigo/10 text-brand-indigo px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 font-mono">
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i> Criteriu: Originalitatea Soluției (15%)
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Nu o prezentare. Un Live-Action Escape Room în liceu.
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-2">
+          Transformăm o sală de clasă într-un simulator imersiv de 30 de minute. Echipe de 4 prieteni intră și își testează rezistența financiară în fața actorilor noștri.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-        <!-- Card 1 -->
-        <div class="bg-surface-subtle p-6 rounded-2xl border border-white/[0.08] border-subtle-hover">
-          <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-white mb-4">
-            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-          </div>
-          <div class="text-xs font-mono text-gray-400 uppercase">Fenomenul #1</div>
-          <h3 class="text-base font-bold text-white mt-1 mb-2">Comanda colectivă la gard</h3>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            În pauza mare de 20 min, cineva din clasă inițiază comanda de mâncare la gardul școlii. Presiunea este uriașă: refuzul înseamnă excluderea din conversația de pauză.
+      <!-- 4 Stages Timeline -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 relative">
+          <div class="w-8 h-8 rounded-full bg-slate-900 text-white font-mono text-xs font-bold flex items-center justify-center mb-4">01</div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Portofelul cu Bancnote Fizice</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Fiecare echipă primește un portofel cu 300 LEI FUSE (bancnote laminate) și 5 jetoane de reputație. Banii se simt fizic în mână.
           </p>
-          <div class="mt-4 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono">
-            <span class="text-gray-400">Pierdere zilnică:</span>
-            <span class="text-accent-rose font-bold">25 - 35 LEI</span>
-          </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="bg-surface-subtle p-6 rounded-2xl border border-white/[0.08] border-subtle-hover">
-          <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-white mb-4">
-            <i data-lucide="coffee" class="w-5 h-5"></i>
-          </div>
-          <div class="text-xs font-mono text-gray-400 uppercase">Fenomenul #2</div>
-          <h3 class="text-base font-bold text-white mt-1 mb-2">Social Drinking (Băuturi de Statut)</h3>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Paharul de ice coffee, bubble tea sau doza de energizant nu sunt achiziționate din nevoie, ci funcționează ca un accesoriu de imagine pe holurile liceului.
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 relative">
+          <div class="w-8 h-8 rounded-full bg-slate-900 text-white font-mono text-xs font-bold flex items-center justify-center mb-4">02</div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Cele 4 Stații de Tensiune</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Echipa navighează prin: Gardul școlii, Flash-Sale Mall, Grupul de WhatsApp și Urgența neprevăzută (telefon spart).
           </p>
-          <div class="mt-4 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono">
-            <span class="text-gray-400">Pierdere zilnică:</span>
-            <span class="text-accent-rose font-bold">12 - 18 LEI</span>
-          </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="bg-surface-subtle p-6 rounded-2xl border border-white/[0.08] border-subtle-hover">
-          <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-white mb-4">
-            <i data-lucide="map-pin" class="w-5 h-5"></i>
-          </div>
-          <div class="text-xs font-mono text-gray-400 uppercase">Fenomenul #3</div>
-          <h3 class="text-base font-bold text-white mt-1 mb-2">Vineri la Electroputere Mall</h3>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Ieșirea săptămânală clasică după ore. Combinația dintre mâncare la food court, cinema și cumpărături impulsive „la reducere” golește bugetul pe jumătate de lună în 3 ore.
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 relative">
+          <div class="w-8 h-8 rounded-full bg-slate-900 text-white font-mono text-xs font-bold flex items-center justify-center mb-4">03</div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Presiunea Actorilor Reali</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Elevi din clasele mari joacă rolul prietenilor insistenti. Pentru a trece, elevii trebuie să folosească tehnici reale de asertivitate.
           </p>
-          <div class="mt-4 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono">
-            <span class="text-gray-400">Pierdere per ieșire:</span>
-            <span class="text-accent-rose font-bold">60 - 90 LEI</span>
-          </div>
         </div>
+
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 relative">
+          <div class="w-8 h-8 rounded-full bg-slate-900 text-white font-mono text-xs font-bold flex items-center justify-center mb-4">04</div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Cardul de Asertivitate</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Fiecare elev pleacă acasă cu un card de plastic de mărimea unui card bancar, cu scripturi verbale pe care să le țină în portofel.
+          </p>
+        </div>
+
       </div>
 
-      <!-- Comparison Box -->
-      <div class="bg-surface-card p-6 sm:p-8 rounded-2xl border border-white/[0.08] grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <div class="text-xs font-mono text-accent-rose uppercase font-bold mb-2">Ce oferă sistemul actual (Cursuri formale)</div>
-          <ul class="space-y-2 text-xs sm:text-sm text-gray-400">
-            <li class="flex items-start gap-2">
-              <i data-lucide="x" class="w-4 h-4 text-accent-rose shrink-0 mt-0.5"></i>
-              Prezentări PowerPoint plictisitoare cu formule matematice.
-            </li>
-            <li class="flex items-start gap-2">
-              <i data-lucide="x" class="w-4 h-4 text-accent-rose shrink-0 mt-0.5"></i>
-              Predici despre „economisire” fără nicio legătură cu presiunea din gașcă.
-            </li>
-            <li class="flex items-start gap-2">
-              <i data-lucide="x" class="w-4 h-4 text-accent-rose shrink-0 mt-0.5"></i>
-              Rată de abandon de peste 90% după primele 3 zile.
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="text-xs font-mono text-emerald-400 uppercase font-bold mb-2">Ce construiește Bright Minds (Experiența noastră)</div>
-          <ul class="space-y-2 text-xs sm:text-sm text-gray-300">
-            <li class="flex items-start gap-2">
-              <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
-              Simulare imersivă fizică în sală de clasă transformată în Escape Room.
-            </li>
-            <li class="flex items-start gap-2">
-              <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
-              Antrenament de asertivitate: replici exacte pentru a refuza cheltuiala fără rușine.
-            </li>
-            <li class="flex items-start gap-2">
-              <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
-              Validare măsurată la 30 de zile prin fondul real de urgență creat de elev.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- PANEL 2: EXPERIENTA IMERSIVA & CUM INVATA ELEVII -->
-    <div id="panel-solutie" class="tab-panel hidden">
-      <div class="mb-8">
-        <span class="text-xs font-mono uppercase tracking-wider text-accent-violet">Criteriu Jurizare: Originalitatea Soluției (15%)</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Soluția ca Experiență: Pop-Up Escape Duel</h2>
-        <p class="text-gray-400 text-sm sm:text-base mt-2 max-w-3xl">
-          Nu le spunem elevilor ce să facă. Îi punem într-un mediu controlat cu bani fictivi și tensiune socială reală timp de 30 de minute.
-        </p>
-      </div>
-
-      <!-- Walkthrough Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-10">
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08]">
-          <div class="text-xs font-mono text-white/40 mb-2">ETAPA 01</div>
-          <h3 class="text-sm font-bold text-white mb-2">Portofelul de Start</h3>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Fiecare echipă de 4 elevi primește un plic cu 300 LEI FUSE (bancnote fizice laminate) și 5 jetoane de reputație.
-          </p>
-        </div>
-
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08]">
-          <div class="text-xs font-mono text-white/40 mb-2">ETAPA 02</div>
-          <h3 class="text-sm font-bold text-white mb-2">Zonele de Presiune</h3>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Trec prin 4 stații din sală: Gardul școlii, Reducerea de la Mall, Grupul de WhatsApp și Urgența neprevăzută.
-          </p>
-        </div>
-
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08]">
-          <div class="text-xs font-mono text-white/40 mb-2">ETAPA 03</div>
-          <h3 class="text-sm font-bold text-white mb-2">Testul Asertivității</h3>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Actorii (elevi mai mari) pun presiune verbală. Jucătorii folosesc cardurile cu scripturi verbale de refuz elegant.
-          </p>
-        </div>
-
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08]">
-          <div class="text-xs font-mono text-white/40 mb-2">ETAPA 04</div>
-          <h3 class="text-sm font-bold text-white mb-2">Audit & Card de Portofel</h3>
-          <p class="text-xs text-gray-400 leading-relaxed">
-            Fiecare participant pleacă acasă cu un Card fizic de Asertivitate de buzunar și o provocare de 21 de zile.
-          </p>
-        </div>
-      </div>
-
-      <!-- Obiectul Fizic: Cardul de Asertivitate Preview -->
-      <div class="bg-surface-subtle p-8 rounded-3xl border border-white/[0.08] flex flex-col md:flex-row items-center justify-between gap-8">
-        <div class="max-w-md">
-          <div class="text-xs font-mono text-emerald-400 uppercase font-semibold mb-1">Obiectul palpabil lăsat elevului</div>
-          <h3 class="text-xl font-bold text-white mb-2">Cardul de Asertivitate (Format Card Bancar)</h3>
-          <p class="text-xs text-gray-400 leading-relaxed mb-4">
-            Un card rezistent laminat, de mărimea unui card bancar, pe care elevul îl ține în portofel lângă bani. Oferă 3 replici verificate psihologic pentru a opri orice tentativă de peer-pressure.
-          </p>
-          <div class="text-xs font-mono text-gray-400 bg-white/[0.03] p-3 rounded-xl border border-white/[0.06]">
-            ✓ Cost de producție: 1,30 lei / bucată<br>
-            ✓ Rata de păstrare în portofel: 88% după 30 de zile
+      <!-- THE 3D PHYSICAL CARD SHOWCASE -->
+      <div class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-8 sm:p-12 text-white flex flex-col lg:flex-row items-center justify-between gap-10 shadow-xl">
+        <div class="max-w-xl">
+          <div class="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-mono font-bold mb-4">
+            PROTOTIP FIZIC DE PORTFOLIU
           </div>
-        </div>
+          <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4">
+            Cardul de Asertivitate: Armă de buzunar anti-FOMO
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+            Tipărit pe PVC rigid laminat (dimensiune standard card bancar). Se ține în portofel chiar în fața banilor sau a cardului bancar. Când ești pe cale să cedezi unei comenzi din comoditate, îl citești și ai replica gata pregătită.
+          </p>
 
-        <!-- Visual representation of card -->
-        <div class="w-full sm:w-80 h-48 rounded-2xl holo-card p-5 flex flex-col justify-between shrink-0 relative overflow-hidden">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono tracking-widest text-emerald-400 font-bold">BRIGHT MINDS • CRAIOVA</span>
-            <i data-lucide="shield" class="w-4 h-4 text-white/60"></i>
-          </div>
-          <div>
-            <div class="text-[10px] font-mono text-gray-400 uppercase">Script de Refuz Asertiv</div>
-            <div class="text-xs font-bold text-white mt-1 leading-snug">
-              „Vin cu voi pentru companie, dar nu mănânc. Țin bugetul pentru obiectivul meu.”
+          <div class="grid grid-cols-2 gap-4 text-xs font-mono">
+            <div class="bg-white/5 p-3 rounded-xl border border-white/10">
+              <span class="text-emerald-400 font-bold block">✓ Cost: 1,30 LEI</span>
+              <span class="text-slate-400">Producție per unitate</span>
+            </div>
+            <div class="bg-white/5 p-3 rounded-xl border border-white/10">
+              <span class="text-emerald-400 font-bold block">✓ 88% Retenție</span>
+              <span class="text-slate-400">Păstrat în portofel la 30 zile</span>
             </div>
           </div>
-          <div class="flex items-center justify-between text-[9px] font-mono text-gray-400 pt-2 border-t border-white/[0.08]">
+        </div>
+
+        <!-- Visual Bank Card -->
+        <div class="w-full sm:w-[360px] h-[220px] rounded-2xl bank-card-3d p-6 flex flex-col justify-between shrink-0 shadow-2xl relative overflow-hidden animate-float-slow">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-emerald-500 flex items-center justify-center font-bold text-slate-950 text-xs">BM</div>
+              <span class="font-mono text-[11px] font-bold tracking-widest text-emerald-300">ASSERTIVENESS CARD</span>
+            </div>
+            <i data-lucide="wifi" class="w-5 h-5 text-slate-400"></i>
+          </div>
+
+          <div>
+            <div class="text-[9px] font-mono text-slate-400 uppercase tracking-widest mb-1">Replica Oficială #1</div>
+            <div class="text-sm font-bold text-white leading-tight">
+              „Vin cu voi pentru vibe, dar țin bugetul pentru festivalul de la vară.”
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-2 border-t border-white/10 text-[10px] font-mono text-slate-400">
             <span>OUTSMART THE SQUAD</span>
-            <span class="text-emerald-400">DISCIPLINA = PUTERE</span>
+            <span class="text-emerald-400 font-bold">LICEUL DIN CRAIOVA</span>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- PANEL 3: SIMULATORUL INTERACTIV JUCABIL (PROTOTIPUL) -->
-    <div id="panel-simulator" class="tab-panel hidden">
-      <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <span class="text-xs font-mono uppercase tracking-wider text-emerald-400">Prototip Interactiv Funcțional</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-0.5">Simulatorul de Decizie Financiară</h2>
-          <p class="text-gray-400 text-xs sm:text-sm mt-1">Trăiește dilemele unui elev de liceu din Craiova în timp real.</p>
+    </div>
+  </section>
+
+  <!-- SECTIUNEA 3: SIMULATORUL INTERACTIV JUCABIL (PROTOTIPUL) -->
+  <section id="simulator" class="py-20 bg-slate-900 text-white relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3.5 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-3">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          Prototip Funcțional • Testează Scenariul Acum
         </div>
-        <button onclick="resetGame()" class="self-start sm:self-auto text-xs font-mono text-gray-400 hover:text-white px-3 py-1.5 rounded-lg border border-white/[0.08] hover:border-white/20 transition flex items-center gap-1.5">
-          <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Resetează
-        </button>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          Simulatorul: Vineri la Mall & Pauza Mare
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-lg mx-auto">
+          Ia deciziile financiare reale ale unui licean din Craiova. Vezi dacă ajungi la sfârșitul lunii cu banii și respectul colegilor intacte!
+        </p>
       </div>
 
-      <!-- Simulator Board -->
-      <div class="bg-surface-subtle border border-white/[0.08] rounded-3xl p-6 sm:p-8">
+      <!-- SIMULATOR CONSOLE CONTAINER -->
+      <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
         
-        <!-- Status Meters -->
-        <div class="grid grid-cols-3 gap-3 sm:gap-6 bg-surface-card p-4 rounded-2xl border border-white/[0.06] mb-8">
+        <!-- DASHBOARD STATUS BAR -->
+        <div class="grid grid-cols-3 gap-3 sm:gap-6 bg-slate-900/80 p-4 rounded-2xl border border-slate-800 mb-8">
           <div>
-            <div class="text-[11px] font-mono text-gray-400 flex items-center gap-1 mb-1">
+            <div class="text-[11px] font-mono text-slate-400 flex items-center gap-1 font-semibold mb-1">
               <i data-lucide="wallet" class="w-3.5 h-3.5 text-emerald-400"></i> BUGET RĂMAS
             </div>
             <div id="sim-budget" class="text-xl sm:text-2xl font-bold font-mono text-emerald-400">300 LEI</div>
-            <div class="w-full bg-white/[0.06] h-1.5 rounded-full mt-2 overflow-hidden">
+            <div class="w-full bg-slate-800 h-2 rounded-full mt-2 overflow-hidden">
               <div id="sim-bar-budget" class="bg-emerald-400 h-full rounded-full transition-all duration-300" style="width: 100%;"></div>
             </div>
           </div>
 
           <div>
-            <div class="text-[11px] font-mono text-gray-400 flex items-center gap-1 mb-1">
-              <i data-lucide="users" class="w-3.5 h-3.5 text-accent-cyan"></i> REPUTAȚIE GAȘCĂ
+            <div class="text-[11px] font-mono text-slate-400 flex items-center gap-1 font-semibold mb-1">
+              <i data-lucide="users" class="w-3.5 h-3.5 text-brand-indigo"></i> RESPECT GAȘCĂ
             </div>
-            <div id="sim-rep" class="text-xl sm:text-2xl font-bold font-mono text-accent-cyan">100%</div>
-            <div class="w-full bg-white/[0.06] h-1.5 rounded-full mt-2 overflow-hidden">
-              <div id="sim-bar-rep" class="bg-accent-cyan h-full rounded-full transition-all duration-300" style="width: 100%;"></div>
+            <div id="sim-rep" class="text-xl sm:text-2xl font-bold font-mono text-brand-indigo">100%</div>
+            <div class="w-full bg-slate-800 h-2 rounded-full mt-2 overflow-hidden">
+              <div id="sim-bar-rep" class="bg-brand-indigo h-full rounded-full transition-all duration-300" style="width: 100%;"></div>
             </div>
           </div>
 
           <div>
-            <div class="text-[11px] font-mono text-gray-400 flex items-center gap-1 mb-1">
-              <i data-lucide="zap" class="w-3.5 h-3.5 text-accent-rose"></i> NIVEL FOMO
+            <div class="text-[11px] font-mono text-slate-400 flex items-center gap-1 font-semibold mb-1">
+              <i data-lucide="zap" class="w-3.5 h-3.5 text-brand-coral"></i> NIVEL FOMO
             </div>
-            <div id="sim-fomo" class="text-xl sm:text-2xl font-bold font-mono text-accent-rose">20%</div>
-            <div class="w-full bg-white/[0.06] h-1.5 rounded-full mt-2 overflow-hidden">
-              <div id="sim-bar-fomo" class="bg-accent-rose h-full rounded-full transition-all duration-300" style="width: 20%;"></div>
+            <div id="sim-fomo" class="text-xl sm:text-2xl font-bold font-mono text-brand-coral">20%</div>
+            <div class="w-full bg-slate-800 h-2 rounded-full mt-2 overflow-hidden">
+              <div id="sim-bar-fomo" class="bg-brand-coral h-full rounded-full transition-all duration-300" style="width: 20%;"></div>
             </div>
           </div>
         </div>
 
-        <!-- Live Scenario Box -->
-        <div id="sim-active-scenario">
-          <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-2">
-            <span id="sim-step" class="text-white font-semibold">SCENARIUL 1 DIN 4</span>
-            <span id="sim-location" class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-emerald-400"></i> Gardul Liceului (Pauza Mare)</span>
+        <!-- SCENARIO ACTIVE BOX -->
+        <div id="sim-active-box">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+            <span id="sim-step" class="text-emerald-400 font-bold">SCENARIUL 1 DIN 4</span>
+            <span id="sim-location" class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i> Gardul Liceului (Pauza Mare)</span>
           </div>
 
           <h3 id="sim-title" class="text-xl sm:text-2xl font-bold text-white mb-3">
             Comanda de burgeri la gardul școlii
           </h3>
 
-          <div id="sim-desc" class="text-sm text-gray-300 bg-surface-card p-4 rounded-xl border border-white/[0.06] mb-6 leading-relaxed">
+          <div id="sim-desc" class="text-xs sm:text-sm text-slate-300 bg-slate-900 p-4 rounded-xl border border-slate-800/80 mb-6 leading-relaxed">
             E pauza de 20 de minute. Toată gașca se strânge la gardul liceului și pune comanda colectivă de shaorma/burgeri. Te întreabă direct: „Mihai, punem și pentru tine un meniu complet la 32 de lei?”. Tu ai mâncat deja un sendviș de acasă acum o oră.
           </div>
 
           <!-- Options -->
           <div id="sim-choices" class="space-y-3">
-            <!-- Injected by JS -->
+            <!-- Dynamic Buttons via JS -->
           </div>
         </div>
 
-        <!-- Final Report (Hidden initially) -->
-        <div id="sim-end-report" class="hidden text-center py-6">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3">
-            <i data-lucide="award" class="w-6 h-6"></i>
+        <!-- SIMULATOR RESULT VIEW (Hidden initially) -->
+        <div id="sim-result-box" class="hidden text-center py-6">
+          <div class="w-16 h-16 rounded-3xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="award" class="w-8 h-8"></i>
           </div>
-          <h3 id="sim-end-title" class="text-2xl font-bold text-white mb-2">Raport de Asertivitate</h3>
-          <p id="sim-end-desc" class="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto mb-6 leading-relaxed"></p>
+          <h3 id="sim-result-title" class="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+            Profil Financiar Stabilit
+          </h3>
+          <p id="sim-result-desc" class="text-xs sm:text-sm text-slate-300 max-w-md mx-auto mb-6 leading-relaxed"></p>
 
-          <div class="bg-surface-card p-4 rounded-2xl border border-white/[0.08] max-w-sm mx-auto mb-6 text-left">
-            <div class="text-[10px] font-mono text-gray-400 uppercase">Statut acordat:</div>
-            <div id="sim-end-badge" class="text-sm font-bold text-emerald-400 mt-1 flex items-center gap-2">
+          <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 max-w-sm mx-auto mb-6 text-left">
+            <div class="text-[10px] font-mono text-slate-400 uppercase">Insignă Câștigată:</div>
+            <div id="sim-result-badge" class="text-sm font-bold text-emerald-400 mt-1 flex items-center gap-2">
               <i data-lucide="check-circle" class="w-4 h-4"></i> Stăpânul Propriilor Bani
             </div>
           </div>
 
-          <button onclick="resetGame()" class="bg-white hover:bg-gray-100 text-black font-semibold text-xs px-5 py-2.5 rounded-xl transition font-mono">
-            Reia Scenariul cu Alte Opțiuni
+          <button onclick="resetSimulator()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs sm:text-sm px-6 py-3 rounded-xl transition font-mono flex items-center gap-2 mx-auto active:scale-95">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+            <span>Reia Scenariul cu Alte Opțiuni</span>
           </button>
         </div>
 
       </div>
+
     </div>
+  </section>
 
-    <!-- PANEL 4: BUGETUL STRICT DE 5.000€ -->
-    <div id="panel-buget" class="tab-panel hidden">
-      <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <span class="text-xs font-mono uppercase tracking-wider text-accent-amber">Criteriu Jurizare: Disciplina Bugetului (20%)</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Buget Riguros: 5.000 €</h2>
-          <p class="text-gray-400 text-xs sm:text-sm mt-1">Fiecare euro este legat de un rezultat măsurabil, fără pierderi.</p>
+  <!-- SECTIUNEA 4: CALCULATORUL INTERACTIV DE BUGET & SCALARE (NOU!) -->
+  <section id="calculator" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-700 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 font-mono">
+          <i data-lucide="calculator" class="w-3.5 h-3.5"></i> Interactiv: Scalabilitate & ROI
         </div>
-
-        <!-- Download budget summary -->
-        <div class="text-xs font-mono text-gray-400 bg-surface-subtle px-3 py-2 rounded-xl border border-white/[0.08]">
-          Cost per elev impactat: <strong class="text-emerald-400">45 €</strong>
-        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Câți elevi putem schimba cu 5.000 €?
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2 max-w-lg mx-auto">
+          Deplasează cursorul pentru a vedea cum scade costul per elev și câți bani economisește comunitatea liceului după antrenament.
+        </p>
       </div>
 
-      <!-- Budget Table -->
-      <div class="overflow-x-auto rounded-2xl border border-white/[0.08] mb-8">
-        <table class="w-full text-left text-xs sm:text-sm text-gray-300 bg-surface-subtle">
-          <thead class="bg-surface-card text-[11px] uppercase font-mono text-gray-400 border-b border-white/[0.08]">
+      <!-- Interactive Calculator Slider Card -->
+      <div class="clean-card p-6 sm:p-10 rounded-3xl border border-slate-200">
+        
+        <div class="mb-8">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs sm:text-sm font-bold text-slate-700">Număr de elevi participanți:</span>
+            <span id="slider-val" class="text-xl sm:text-2xl font-extrabold font-mono text-brand-indigo">110 elevi</span>
+          </div>
+          <input type="range" id="students-slider" min="50" max="400" value="110" step="10" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+          <div class="flex justify-between text-[11px] font-mono text-slate-400 mt-1">
+            <span>50 (Liceul nostru)</span>
+            <span>200 (2 Licee Craiova)</span>
+            <span>400 (Faza Municipală)</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-slate-200 text-center">
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <div class="text-xs font-mono text-slate-500 uppercase">Cost per elev</div>
+            <div id="calc-cost" class="text-xl sm:text-2xl font-bold font-mono text-slate-900 mt-1">45 €</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Scade pe măsură ce scalăm</div>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <div class="text-xs font-mono text-slate-500 uppercase">Bani salvați lunar</div>
+            <div id="calc-saved" class="text-xl sm:text-2xl font-bold font-mono text-emerald-600 mt-1">11.000 LEI</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Oprirea micro-scurgerilor</div>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <div class="text-xs font-mono text-slate-500 uppercase">ROI Social / An</div>
+            <div id="calc-roi" class="text-xl sm:text-2xl font-bold font-mono text-brand-indigo mt-1">520%</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Bani rămași la familii</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTIUNEA 5: BUGETUL RIGUROS DE 5.000€ -->
+  <section id="buget" class="py-20 bg-slate-100/70 border-y border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="max-w-3xl mb-12">
+        <div class="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 font-mono">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Criteriu: Disciplina Bugetului & Fezabilitate (20%)
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Bugetul de 5.000 €: Fiecare leu are justificare
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2">
+          Am inclus un <strong>fond de rezervă blocat de 14% (Plan B)</strong> pentru a acoperi orice variație de preț sau urgență logistică.
+        </p>
+      </div>
+
+      <!-- Responsive Clean Table -->
+      <div class="overflow-x-auto clean-card rounded-3xl border border-slate-200 mb-8">
+        <table class="w-full text-left text-xs sm:text-sm text-slate-700">
+          <thead class="bg-slate-50 text-[11px] uppercase font-mono text-slate-500 border-b border-slate-200">
             <tr>
-              <th class="py-3.5 px-5">Categorie</th>
-              <th class="py-3.5 px-5">Ce acoperă</th>
-              <th class="py-3.5 px-5">Suma (€)</th>
-              <th class="py-3.5 px-5">% Total</th>
-              <th class="py-3.5 px-5">Justificare & Prioritizare</th>
+              <th class="py-4 px-6">Categorie Cheltuieli</th>
+              <th class="py-4 px-6">Ce acoperă concret</th>
+              <th class="py-4 px-6">Suma (€)</th>
+              <th class="py-4 px-6">% Total</th>
+              <th class="py-4 px-6">Prioritizare</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-white/[0.06]">
-            <tr class="hover:bg-white/[0.02]">
-              <td class="py-3.5 px-5 font-semibold text-white">Scenografie & Recuzită Escape Room</td>
-              <td class="py-3.5 px-5 text-gray-400 text-xs">Panouri modulare, 4 seifuri mecanice cu cifru, lumini ambientale, cronometre</td>
-              <td class="py-3.5 px-5 font-mono font-bold text-white">1.350 €</td>
-              <td class="py-3.5 px-5 font-mono text-gray-400">27%</td>
-              <td class="py-3.5 px-5 text-xs text-gray-400">Creează atmosfera autentică de joc, eliminând senzația de „oră de școală”.</td>
+          <tbody class="divide-y divide-slate-100">
+            <tr class="hover:bg-slate-50/50">
+              <td class="py-4 px-6 font-bold text-slate-900">Scenografie & Recuzită Sală</td>
+              <td class="py-4 px-6 text-slate-600 text-xs">Panouri modulare, 4 seifuri cu cifru mecanic, lumini de tensiune, cronometre</td>
+              <td class="py-4 px-6 font-mono font-bold text-slate-900">1.350 €</td>
+              <td class="py-4 px-6 font-mono text-slate-500">27%</td>
+              <td class="py-4 px-6 text-xs text-slate-500">Esențial: elimină atmosfera de sală de clasă.</td>
             </tr>
-            <tr class="hover:bg-white/[0.02]">
-              <td class="py-3.5 px-5 font-semibold text-white">Materiale Fizice & Carduri Laminate</td>
-              <td class="py-3.5 px-5 text-gray-400 text-xs">600 bancnote „LEI FUSE”, 100 seturi cărți de joc, 500 carduri de portofel</td>
-              <td class="py-3.5 px-5 font-mono font-bold text-white">650 €</td>
-              <td class="py-3.5 px-5 font-mono text-gray-400">13%</td>
-              <td class="py-3.5 px-5 text-xs text-gray-400">Rezistente la uzură; pot fi refolosite pentru generațiile următoare de elevi.</td>
+            <tr class="hover:bg-slate-50/50">
+              <td class="py-4 px-6 font-bold text-slate-900">Materiale Fizice & Carduri PVC</td>
+              <td class="py-4 px-6 text-slate-600 text-xs">600 bancnote laminate „LEI FUSE”, 100 cărți de joc, 500 carduri de portofel</td>
+              <td class="py-4 px-6 font-mono font-bold text-slate-900">650 €</td>
+              <td class="py-4 px-6 font-mono text-slate-500">13%</td>
+              <td class="py-4 px-6 text-xs text-slate-500">Rezistente; refolosibile pentru generațiile viitoare.</td>
             </tr>
-            <tr class="hover:bg-white/[0.02]">
-              <td class="py-3.5 px-5 font-semibold text-white">Premiul Competiției „Cupa Claselor”</td>
-              <td class="py-3.5 px-5 text-gray-400 text-xs">Închiriere sală privată cinema Electroputere Mall (30 elevi) + premii suport</td>
-              <td class="py-3.5 px-5 font-mono font-bold text-white">1.100 €</td>
-              <td class="py-3.5 px-5 font-mono text-accent-amber">22%</td>
-              <td class="py-3.5 px-5 text-xs text-gray-400">Magnetul psihologic principal pentru participarea voluntară a 100 de elevi.</td>
+            <tr class="hover:bg-slate-50/50">
+              <td class="py-4 px-6 font-bold text-slate-900">Premiul Competiției „Cupa Claselor”</td>
+              <td class="py-4 px-6 text-slate-600 text-xs">Sală privată cinema Electroputere Mall (30 elevi) + premii suport</td>
+              <td class="py-4 px-6 font-mono font-bold text-emerald-600">1.100 €</td>
+              <td class="py-4 px-6 font-mono text-slate-500">22%</td>
+              <td class="py-4 px-6 text-xs text-slate-500">Magnetul psihologic pentru participarea fără note.</td>
             </tr>
-            <tr class="hover:bg-white/[0.02]">
-              <td class="py-3.5 px-5 font-semibold text-white">Kit Tehnic & Vizibilitate Liceu</td>
-              <td class="py-3.5 px-5 text-gray-400 text-xs">2 tablete recondiționate scoruri live, roll-up-uri hol liceu, stickere</td>
-              <td class="py-3.5 px-5 font-mono font-bold text-white">750 €</td>
-              <td class="py-3.5 px-5 font-mono text-gray-400">15%</td>
-              <td class="py-3.5 px-5 text-xs text-gray-400">Afișează clasamentul echipelor în timp real pe holul școlii.</td>
+            <tr class="hover:bg-slate-50/50">
+              <td class="py-4 px-6 font-bold text-slate-900">Kit Tehnic & Tablete Scor Live</td>
+              <td class="py-4 px-6 text-slate-600 text-xs">2 tablete recondiționate scoruri live, roll-up-uri hol liceu, afișe</td>
+              <td class="py-4 px-6 font-mono font-bold text-slate-900">750 €</td>
+              <td class="py-4 px-6 font-mono text-slate-500">15%</td>
+              <td class="py-4 px-6 text-xs text-slate-500">Afișează scorul în timp real pe holul școlii.</td>
             </tr>
-            <tr class="hover:bg-white/[0.02]">
-              <td class="py-3.5 px-5 font-semibold text-white">Logistică & Training Voluntari</td>
-              <td class="py-3.5 px-5 text-gray-400 text-xs">Instructaj pentru 10 elevi-actori clase mari, gustări pe durata celor 5 zile</td>
-              <td class="py-3.5 px-5 font-mono font-bold text-white">450 €</td>
-              <td class="py-3.5 px-5 font-mono text-gray-400">9%</td>
-              <td class="py-3.5 px-5 text-xs text-gray-400">Garantează desfășurarea impecabilă a fiecărei sesiuni de joc.</td>
+            <tr class="hover:bg-slate-50/50">
+              <td class="py-4 px-6 font-bold text-slate-900">Logistică & Training Voluntari</td>
+              <td class="py-4 px-6 text-slate-600 text-xs">Instructaj pentru 10 elevi-actori, gustări pe durata celor 5 zile de joc</td>
+              <td class="py-4 px-6 font-mono font-bold text-slate-900">450 €</td>
+              <td class="py-4 px-6 font-mono text-slate-500">9%</td>
+              <td class="py-4 px-6 text-xs text-slate-500">Asigură fluența și seriozitatea simulării.</td>
             </tr>
-            <tr class="bg-emerald-500/[0.04] font-semibold">
-              <td class="py-3.5 px-5 text-emerald-400">Fond Rezervă Neprevăzut (Plan B)</td>
-              <td class="py-3.5 px-5 text-gray-400 text-xs">Buffer financiar blocat pentru variații de preț / reparații recuzită</td>
-              <td class="py-3.5 px-5 font-mono font-bold text-emerald-400">700 €</td>
-              <td class="py-3.5 px-5 font-mono text-emerald-400">14%</td>
-              <td class="py-3.5 px-5 text-xs text-gray-400">Dovada disciplinei financiare și a rezilienței cerute de juriu.</td>
+            <tr class="bg-emerald-50 font-semibold">
+              <td class="py-4 px-6 text-emerald-800">Fond Rezervă Neprevăzut (Plan B)</td>
+              <td class="py-4 px-6 text-emerald-700 text-xs">Buffer financiar blocat pentru variații de preț / defecțiuni</td>
+              <td class="py-4 px-6 font-mono font-bold text-emerald-800">700 €</td>
+              <td class="py-4 px-6 font-mono text-emerald-700">14%</td>
+              <td class="py-4 px-6 text-xs text-emerald-700">Garanția că proiectul nu rămâne neterminat.</td>
             </tr>
-            <tr class="bg-surface-card font-bold border-t border-white/[0.1]">
-              <td class="py-4 px-5 text-white">TOTAL BUGET</td>
-              <td class="py-4 px-5 text-xs font-mono text-gray-400">Zero depășire, 100% justificat</td>
-              <td class="py-4 px-5 font-mono text-base text-white">5.000 €</td>
-              <td class="py-4 px-5 font-mono text-gray-400">100%</td>
-              <td class="py-4 px-5 text-xs text-emerald-400">Investiție cu impact de lungă durată</td>
+            <tr class="bg-slate-900 text-white font-bold">
+              <td class="py-4 px-6 text-white">TOTAL BUGET</td>
+              <td class="py-4 px-6 text-xs font-mono text-slate-300">100% acoperit, zero speculație</td>
+              <td class="py-4 px-6 font-mono text-lg text-emerald-400">5.000 €</td>
+              <td class="py-4 px-6 font-mono text-slate-300">100%</td>
+              <td class="py-4 px-6 text-xs text-slate-300">Investiție cu impact de lungă durată</td>
             </tr>
           </tbody>
         </table>
       </div>
+
     </div>
+  </section>
 
-    <!-- PANEL 5: TESTUL DE VALIDARE & PLANUL B -->
-    <div id="panel-validare" class="tab-panel hidden">
-      <div class="mb-8">
-        <span class="text-xs font-mono uppercase tracking-wider text-accent-cyan">Criteriu Jurizare: Adaptabilitate & Validare (20%)</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Testul de Validare & Planul B</h2>
-      </div>
+  <!-- SECTIUNEA 6: TESTUL DE VALIDARE & PLANUL B -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        
+        <!-- Intrebarile obligatorii -->
+        <div class="clean-card p-6 sm:p-8 rounded-3xl border border-slate-200">
+          <div class="text-xs font-mono font-bold text-brand-indigo uppercase mb-2">Testul de Validare din Regulament</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-6">Răspunsul la cele 2 întrebări-cheie:</h3>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        <!-- Q1 & Q2 Validation -->
-        <div class="bg-surface-subtle p-6 rounded-2xl border border-white/[0.08] flex flex-col justify-between">
-          <div>
-            <div class="text-xs font-mono text-emerald-400 uppercase font-semibold mb-2">Testul de Validare 01</div>
-            <h3 class="text-base font-bold text-white mb-2">Cum convingem 100 de elevi fără note sau obligație?</h3>
-            <p class="text-xs text-gray-400 leading-relaxed mb-6">
-              Mizăm pe <strong>statut și rivalitate între clase (Cupa Claselor)</strong>. În loc de „educație”, le oferim o provocare pe echipe de 4 prieteni. Miza este o seară întreagă de film privat la Cinema Electroputere Mall pentru toată clasa câștigătoare.
-            </p>
+          <div class="space-y-6">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+              <h4 class="text-xs sm:text-sm font-bold text-slate-900 mb-1">
+                1. Cum convingeți 100 de elevi să participe fără note sau obligație?
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Mizăm pe <strong>statut și rivalitate între clase (Cupa Claselor)</strong>. Înscrierea se face în găști de 4 prieteni. Dacă un elev vrea să participe, își aduce automat prietenii. Premiul este o seară privată de cinema la Electroputere Mall pentru întreaga clasă câștigătoare.
+              </p>
+            </div>
 
-            <div class="text-xs font-mono text-accent-cyan uppercase font-semibold mb-2">Testul de Validare 02</div>
-            <h3 class="text-base font-bold text-white mb-2">Cum demonstrăm după 30 de zile că i-a ajutat?</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">
-              Nu folosim chestionare de opinie („v-a plăcut?”). Cerem o probă materială: <strong>Auditul Fondului de 70 LEI</strong>. Elevul demonstrează existența banilor economisiți fizic pe parcursul lunii prin refuzarea cumpărăturilor impulsive de grup.
-            </p>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+              <h4 class="text-xs sm:text-sm font-bold text-slate-900 mb-1">
+                2. După o lună, cum demonstrați că proiectul chiar i-a ajutat, nu doar le-a plăcut?
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Nu folosim formulare de feedback cu zâmbete. Aplicăm <strong>Auditul Fondului de Urgență</strong>: elevii fac dovada existenței sumei de cel puțin 70 de lei economisiți fizic pe parcursul celor 30 de zile exclusiv prin refuzarea cumpărăturilor impulsive de grup.
+              </p>
+            </div>
           </div>
         </div>
 
-        <!-- Plan B Scenarios -->
-        <div class="bg-surface-subtle p-6 rounded-2xl border border-white/[0.08]">
-          <div class="text-xs font-mono text-accent-amber uppercase font-semibold mb-2">Adaptabilitate & Planul B</div>
-          <h3 class="text-base font-bold text-white mb-4">Ce facem când planurile nu merg conform așteptărilor?</h3>
+        <!-- Plan B Scenarii de Criza -->
+        <div class="clean-card p-6 sm:p-8 rounded-3xl border border-slate-200">
+          <div class="text-xs font-mono font-bold text-amber-600 uppercase mb-2">Criteriu: Adaptabilitate la Neprevăzut</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-6">Planul B: Pregătiți pentru Obstacole</h3>
 
-          <div class="space-y-4">
-            <div class="bg-surface-card p-3.5 rounded-xl border border-white/[0.06]">
-              <div class="text-xs font-bold text-white flex items-center justify-between">
-                <span>Risc: Conducerea liceului nu eliberează o sală</span>
-                <span class="text-[10px] font-mono text-accent-amber">PLAN B</span>
+          <div class="space-y-3.5">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+              <div class="text-xs font-bold text-slate-900 flex items-center justify-between">
+                <span>Risc: Conducerea nu eliberează o sală dedicată</span>
+                <span class="text-[10px] font-mono font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">PLAN B</span>
               </div>
-              <p class="text-[11px] text-gray-400 mt-1">
-                Trecem pe formatul <em>Pop-up Mobile Desks</em> amplasate pe holul liceului și în curte, cu sesiuni scurte de 15 minute.
+              <p class="text-xs text-slate-600 mt-1">
+                Trecem pe formatul <em>Pop-up Mobile Desks</em> amplasate pe holul mare și în curte, scurtând sesiunile la runde rapide de 15 minute.
               </p>
             </div>
 
-            <div class="bg-surface-card p-3.5 rounded-xl border border-white/[0.06]">
-              <div class="text-xs font-bold text-white flex items-center justify-between">
-                <span>Risc: Elevii se tem de expunere publică</span>
-                <span class="text-[10px] font-mono text-accent-amber">PLAN B</span>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+              <div class="text-xs font-bold text-slate-900 flex items-center justify-between">
+                <span>Risc: Elevii se tem să fie judecați sau expuși</span>
+                <span class="text-[10px] font-mono font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">PLAN B</span>
               </div>
-              <p class="text-[11px] text-gray-400 mt-1">
-                Participarea se face sub pseudonime de echipă anonime (ex: „Echipa X-a B”). Scorul arată doar deciziile, nu persoana.
+              <p class="text-xs text-slate-600 mt-1">
+                Înscrierea se face pe porecle de echipă (ex: „Echipa X-a B”). Scorul arată doar decizia strategică, fără nume de familie.
               </p>
             </div>
 
-            <div class="bg-surface-card p-3.5 rounded-xl border border-white/[0.06]">
-              <div class="text-xs font-bold text-white flex items-center justify-between">
-                <span>Risc: Costurile de recuzită cresc din cauza inflației</span>
-                <span class="text-[10px] font-mono text-accent-amber">PLAN B</span>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+              <div class="text-xs font-bold text-slate-900 flex items-center justify-between">
+                <span>Risc: Creșterea prețurilor la recuzită</span>
+                <span class="text-[10px] font-mono font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">PLAN B</span>
               </div>
-              <p class="text-[11px] text-gray-400 mt-1">
+              <p class="text-xs text-slate-600 mt-1">
                 Se activează automat Fondul de Rezervă de 700 € (14% din buget) prevăzut expres în planificare.
               </p>
             </div>
           </div>
         </div>
+
       </div>
 
       <!-- 3 Key Metric Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08] text-center">
-          <div class="text-2xl font-bold font-mono text-emerald-400 mb-1">≥ 45%</div>
-          <div class="text-xs font-bold text-white mb-1">Adoptare Fond Urgență</div>
-          <div class="text-[11px] text-gray-400">Elevi care fac dovada economisirii a 70–100 lei la 30 de zile.</div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="clean-card p-6 rounded-3xl text-center border-t-4 border-t-emerald-500">
+          <div class="text-3xl font-extrabold font-mono text-emerald-600 mb-1">≥ 45%</div>
+          <div class="text-sm font-bold text-slate-900 mb-1">Rată Fond de Urgență</div>
+          <div class="text-xs text-slate-500">Participanți care demonstrează la 30 de zile economisirea a 70–100 lei.</div>
         </div>
 
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08] text-center">
-          <div class="text-2xl font-bold font-mono text-accent-cyan mb-1">-25%</div>
-          <div class="text-xs font-bold text-white mb-1">Reducere Comenzi Impuls</div>
-          <div class="text-[11px] text-gray-400">Scădere a banilor cheltuiți zilnic pe mâncare la gard și băuturi.</div>
+        <div class="clean-card p-6 rounded-3xl text-center border-t-4 border-t-brand-indigo">
+          <div class="text-3xl font-extrabold font-mono text-brand-indigo mb-1">-25%</div>
+          <div class="text-sm font-bold text-slate-900 mb-1">Reducere Comenzi Impuls</div>
+          <div class="text-xs text-slate-500">Scădere a banilor aruncați zilnic pe mâncare la gard și băuturi.</div>
         </div>
 
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08] text-center">
-          <div class="text-2xl font-bold font-mono text-accent-violet mb-1">3.2 ➔ 7.5</div>
-          <div class="text-xs font-bold text-white mb-1">Index Asertivitate Emoțională</div>
-          <div class="text-[11px] text-gray-400">Măsurat pe scală 1-10: încrederea de a refuza o cheltuială fără rușine.</div>
+        <div class="clean-card p-6 rounded-3xl text-center border-t-4 border-t-purple-600">
+          <div class="text-3xl font-extrabold font-mono text-purple-600 mb-1">3.2 ➔ 7.5</div>
+          <div class="text-sm font-bold text-slate-900 mb-1">Index Asertivitate Emoțională</div>
+          <div class="text-xs text-slate-500">Pe o scală 1-10: încrederea de a refuza o cheltuială fără rușine.</div>
         </div>
       </div>
+
     </div>
+  </section>
 
-    <!-- PANEL 6: ECHIPA BRIGHT MINDS -->
-    <div id="panel-echipa" class="tab-panel hidden">
-      <div class="mb-8">
-        <span class="text-xs font-mono uppercase tracking-wider text-accent-cyan">Criteriu Jurizare: Spirit de Echipă & Distribuirea Strategică a Puterii</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Echipa Bright Minds • Craiova</h2>
-        <p class="text-gray-400 text-sm mt-1">Cei 5 elevi care au transformat o problemă reală de liceu într-un proiect viabil.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 mb-10">
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08] text-center">
-          <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] font-mono font-bold text-white flex items-center justify-center mx-auto mb-3">AP</div>
-          <h3 class="text-sm font-bold text-white">Alex Popa</h3>
-          <div class="text-[11px] font-mono text-emerald-400 mb-2">Project Lead & Buget</div>
-          <p class="text-[11px] text-gray-400 leading-tight">Monitorizează fiecare leu și ține legătura cu furnizorii de recuzită.</p>
+  <!-- SECTIUNEA 7: ECHIPA BRIGHT MINDS -->
+  <section id="echipa" class="py-20 bg-slate-100/70 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-1.5 bg-brand-indigo/10 text-brand-indigo px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 font-mono">
+          Criteriu: Spirit de Echipă & Distribuirea Strategică a Puterii
         </div>
-
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08] text-center">
-          <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] font-mono font-bold text-white flex items-center justify-center mx-auto mb-3">MI</div>
-          <h3 class="text-sm font-bold text-white">Mara Ionescu</h3>
-          <div class="text-[11px] font-mono text-accent-violet mb-2">Story & Scripting</div>
-          <p class="text-[11px] text-gray-400 leading-tight">A creat scenariile realiste și mecanica de tensiune socială a jocului.</p>
-        </div>
-
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08] text-center">
-          <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] font-mono font-bold text-white flex items-center justify-center mx-auto mb-3">RD</div>
-          <h3 class="text-sm font-bold text-white">Radu Dobre</h3>
-          <div class="text-[11px] font-mono text-accent-cyan mb-2">Game Design & Prototip</div>
-          <p class="text-[11px] text-gray-400 leading-tight">A desenat cărțile fizice de joc și cardul de asertivitate de portofel.</p>
-        </div>
-
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08] text-center">
-          <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] font-mono font-bold text-white flex items-center justify-center mx-auto mb-3">DE</div>
-          <h3 class="text-sm font-bold text-white">Daria Enache</h3>
-          <div class="text-[11px] font-mono text-accent-amber mb-2">Research & Impact</div>
-          <p class="text-[11px] text-gray-400 leading-tight">A derulat sondajul pe 110 elevi și analizează datele la 30 de zile.</p>
-        </div>
-
-        <div class="bg-surface-subtle p-5 rounded-2xl border border-white/[0.08] text-center">
-          <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] font-mono font-bold text-white flex items-center justify-center mx-auto mb-3">VS</div>
-          <h3 class="text-sm font-bold text-white">Vlad Stancu</h3>
-          <div class="text-[11px] font-mono text-accent-rose mb-2">Logistică & Plan B</div>
-          <p class="text-[11px] text-gray-400 leading-tight">Amenajează sala, coordonează voluntarii și gestionează scenariile de criză.</p>
-        </div>
-      </div>
-
-      <!-- Core Question Highlight -->
-      <div class="bg-surface-subtle p-8 rounded-3xl border border-white/[0.08] max-w-3xl mx-auto text-center">
-        <div class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold mb-2">Întrebarea Finală din Regulament</div>
-        <h3 class="text-xl font-bold text-white mb-4">
-          „Dacă proiectul vostru ar putea schimba un singur lucru în felul în care tinerii se raportează la bani, care ar fi acela?”
-        </h3>
-        <p class="text-base text-gray-300 italic font-medium leading-relaxed">
-          „Să decupleze banii de statutul social: să transforme refuzul financiar dintr-un motiv de rușine într-o insignă de respect, disciplină și putere personală.”
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Echipa Bright Minds • Craiova
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2">
+          5 elevi de liceu cu roluri clar delimitate, fără suprapuneri de responsabilitate.
         </p>
       </div>
-    </div>
 
-  </main>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-16">
+        
+        <div class="clean-card p-5 rounded-3xl text-center">
+          <div class="w-12 h-12 rounded-2xl bg-brand-indigo text-white font-mono font-bold flex items-center justify-center mx-auto mb-3 text-sm shadow-md shadow-indigo-500/20">AP</div>
+          <h3 class="text-sm font-bold text-slate-900">Alex Popa</h3>
+          <div class="text-[11px] font-mono text-brand-indigo font-bold mb-1">Lead & Buget</div>
+          <p class="text-[11px] text-slate-500 leading-tight">Monitorizează fiecare leu și achizițiile de recuzită.</p>
+        </div>
+
+        <div class="clean-card p-5 rounded-3xl text-center">
+          <div class="w-12 h-12 rounded-2xl bg-purple-600 text-white font-mono font-bold flex items-center justify-center mx-auto mb-3 text-sm shadow-md shadow-purple-500/20">MI</div>
+          <h3 class="text-sm font-bold text-slate-900">Mara Ionescu</h3>
+          <div class="text-[11px] font-mono text-purple-600 font-bold mb-1">Story & Scripting</div>
+          <p class="text-[11px] text-slate-500 leading-tight">A creat replicile realiste și tensiunea socială din joc.</p>
+        </div>
+
+        <div class="clean-card p-5 rounded-3xl text-center">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white font-mono font-bold flex items-center justify-center mx-auto mb-3 text-sm shadow-md shadow-emerald-500/20">RD</div>
+          <h3 class="text-sm font-bold text-slate-900">Radu Dobre</h3>
+          <div class="text-[11px] font-mono text-emerald-600 font-bold mb-1">Game Design</div>
+          <p class="text-[11px] text-slate-500 leading-tight">A desenat cărțile fizice și cardul PVC de portofel.</p>
+        </div>
+
+        <div class="clean-card p-5 rounded-3xl text-center">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white font-mono font-bold flex items-center justify-center mx-auto mb-3 text-sm shadow-md shadow-amber-500/20">DE</div>
+          <h3 class="text-sm font-bold text-slate-900">Daria Enache</h3>
+          <div class="text-[11px] font-mono text-amber-600 font-bold mb-1">Research & Date</div>
+          <p class="text-[11px] text-slate-500 leading-tight">A coordonat sondajul pe 110 colegi și auditul la 30 zile.</p>
+        </div>
+
+        <div class="clean-card p-5 rounded-3xl text-center col-span-2 sm:col-span-1">
+          <div class="w-12 h-12 rounded-2xl bg-rose-500 text-white font-mono font-bold flex items-center justify-center mx-auto mb-3 text-sm shadow-md shadow-rose-500/20">VS</div>
+          <h3 class="text-sm font-bold text-slate-900">Vlad Stancu</h3>
+          <div class="text-[11px] font-mono text-rose-600 font-bold mb-1">Logistică & Plan B</div>
+          <p class="text-[11px] text-slate-500 leading-tight">Amenajează sala, coordonează voluntarii și scenariile de criză.</p>
+        </div>
+
+      </div>
+
+      <!-- FINAL CORE BELIEF -->
+      <div class="bg-gradient-to-r from-brand-indigo via-purple-600 to-emerald-600 p-8 sm:p-12 rounded-3xl text-white text-center shadow-xl max-w-3xl mx-auto">
+        <div class="text-xs font-mono font-bold uppercase tracking-widest text-emerald-300 mb-2">
+          Întrebarea Finală din Regulament
+        </div>
+        <h3 class="text-xl sm:text-2xl font-extrabold mb-4">
+          „Dacă proiectul vostru ar putea schimba un singur lucru în felul în care tinerii se raportează la bani, care ar fi acela?”
+        </h3>
+        <p class="text-base sm:text-lg text-emerald-100 font-medium italic leading-relaxed">
+          „Să decupleze banii de statutul social: să transforme refuzul financiar dintr-un motiv de rușine într-o insignă de respect, maturitate și putere personală.”
+        </p>
+      </div>
+
+    </div>
+  </section>
 
   <!-- FOOTER -->
-  <footer class="border-t border-white/[0.06] py-8 px-6 text-xs text-gray-500 font-mono">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>Echipa Bright Minds • Craiova • Competiție Națională de Educație Financiară 2026</div>
-      <div class="flex items-center gap-4 text-gray-400">
-        <a href="https://github.com/alxsam29/outsmart-the-squad" target="_blank" class="hover:text-white transition flex items-center gap-1">
-          <i data-lucide="github" class="w-3.5 h-3.5"></i> GitHub
-        </a>
-      </div>
+  <footer class="bg-white py-10 border-t border-slate-200 text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>© 2026 Echipa Bright Minds • Craiova. Creat pentru Competiția Națională de Educație Financiară.</div>
+      <div class="font-mono text-slate-400">Pregătit pentru prezentare juriu • Zero framework dependencies</div>
     </div>
   </footer>
 
-  <!-- SCRIPT LOGIC: TABS & SIMULATOR -->
+  <!-- JAVASCRIPT: LOGICA PENTRU SIMULATOR & CALCULATOR -->
   <script>
+    // Initialize icons
     lucide.createIcons();
 
-    // Tab switching
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    // 1. CALCULATOR SLIDER LOGIC
+    const slider = document.getElementById('students-slider');
+    const sliderVal = document.getElementById('slider-val');
+    const calcCost = document.getElementById('calc-cost');
+    const calcSaved = document.getElementById('calc-saved');
+    const calcRoi = document.getElementById('calc-roi');
 
-      const activePanel = document.getElementById('panel-' + tabId);
-      const activeBtn = document.getElementById('tab-' + tabId);
+    slider.addEventListener('input', function() {
+      const count = parseInt(this.value);
+      sliderVal.innerText = count + ' elevi';
+      
+      const costPerStudent = Math.round(5000 / count);
+      calcCost.innerText = costPerStudent + ' €';
 
-      if (activePanel) activePanel.classList.remove('hidden');
-      if (activeBtn) activeBtn.classList.add('active');
+      const monthlySaved = count * 100; // 100 lei saved per student on average
+      calcSaved.innerText = monthlySaved.toLocaleString('ro-RO') + ' LEI';
 
-      lucide.createIcons();
-    }
+      // Social ROI: total saved per year divided by 5000 EUR in RON (approx 25.000 RON)
+      const yearlySaved = monthlySaved * 10; // school year approx 10 months
+      const roi = Math.round((yearlySaved / 25000) * 100);
+      calcRoi.innerText = roi + '%';
+    });
 
-    // SIMULATOR LOGIC
+    // 2. SIMULATOR GAME ENGINE
     const scenarios = [
       {
         step: "SCENARIUL 1 DIN 4",
@@ -852,7 +986,7 @@
     function renderSimulator() {
       const s = scenarios[currentStep];
       document.getElementById('sim-step').innerText = s.step;
-      document.getElementById('sim-location').innerHTML = `<i data-lucide="map-pin" class="w-3 h-3 text-emerald-400"></i> ${s.location}`;
+      document.getElementById('sim-location').innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i> ${s.location}`;
       document.getElementById('sim-title').innerText = s.title;
       document.getElementById('sim-desc').innerText = s.desc;
 
@@ -861,16 +995,16 @@
 
       s.choices.forEach((c) => {
         const btn = document.createElement('button');
-        btn.className = "w-full text-left p-3.5 rounded-xl bg-surface-card hover:bg-white/[0.04] border border-white/[0.06] hover:border-white/[0.14] transition flex items-start justify-between gap-3 group";
+        btn.className = "w-full text-left p-4 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 transition flex items-start justify-between gap-3 group active:scale-[0.99]";
         btn.onclick = () => chooseOption(c);
         btn.innerHTML = `
           <div>
-            <div class="text-[10px] font-mono text-gray-400 uppercase font-semibold mb-1 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span> ${c.badge}
+            <div class="text-[10px] font-mono text-emerald-400 uppercase font-semibold mb-1 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> ${c.badge}
             </div>
-            <div class="text-xs sm:text-sm font-medium text-gray-200 group-hover:text-white">${c.text}</div>
+            <div class="text-xs sm:text-sm font-medium text-slate-200 group-hover:text-white">${c.text}</div>
           </div>
-          <div class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded shrink-0">
+          <div class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg shrink-0">
             ${c.cost > 0 ? '-' + c.cost + ' LEI' : '0 LEI'}
           </div>
         `;
@@ -907,43 +1041,43 @@
     }
 
     function finishSimulator() {
-      document.getElementById('sim-active-scenario').classList.add('hidden');
-      document.getElementById('sim-end-report').classList.remove('hidden');
+      document.getElementById('sim-active-box').classList.add('hidden');
+      document.getElementById('sim-result-box').classList.remove('hidden');
 
-      const title = document.getElementById('sim-end-title');
-      const desc = document.getElementById('sim-end-desc');
-      const badge = document.getElementById('sim-end-badge');
+      const title = document.getElementById('sim-result-title');
+      const desc = document.getElementById('sim-result-desc');
+      const badge = document.getElementById('sim-result-badge');
 
       if (budget >= 80 && rep >= 70) {
-        confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+        confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
         title.innerText = "Stăpânul Propriilor Bani (Excelent)";
-        desc.innerText = `Ai finalizat scenariul cu ${budget} LEI neatinși și o cotă de respect de ${rep}% în gașcă. Ai demonstrat că poți refuza cheltuielile inutile fără să te izolezi social.`;
+        desc.innerText = `Ai finalizat simularea cu ${budget} LEI neatinși și o cotă de respect de ${rep}% în gașcă. Ai demonstrat că poți refuza cheltuielile inutile fără să te izolezi social.`;
         badge.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Campion al Asertivității Financiare`;
       } else if (budget < 50) {
         title.innerText = "Vulnerabil la Presiunea de Grup";
         desc.innerText = `Ai rămas cu doar ${budget} LEI. Te-ai conformat de prea multe ori la dorințele celorlalți și ai rămas descoperit în fața urgenței.`;
-        badge.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-accent-rose"></i> Risc de Faliment Social`;
+        badge.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-brand-coral"></i> Risc de Faliment Social`;
       } else {
         title.innerText = "Profil Prudent";
         desc.innerText = `Ai reușit să salvezi o parte din buget (${budget} LEI), dar încă eziți în fața deciziilor de grup.`;
-        badge.innerHTML = `<i data-lucide="info" class="w-4 h-4 text-accent-amber"></i> În curs de perfecționare`;
+        badge.innerHTML = `<i data-lucide="info" class="w-4 h-4 text-amber-500"></i> În curs de perfecționare`;
       }
 
       lucide.createIcons();
     }
 
-    function resetGame() {
+    function resetSimulator() {
       currentStep = 0;
       budget = 300;
       rep = 100;
       fomo = 20;
       updateSimMeters();
-      document.getElementById('sim-end-report').classList.add('hidden');
-      document.getElementById('sim-active-scenario').classList.remove('hidden');
+      document.getElementById('sim-result-box').classList.add('hidden');
+      document.getElementById('sim-active-box').classList.remove('hidden');
       renderSimulator();
     }
 
-    // Init
+    // Init game
     renderSimulator();
   </script>
 </body>
