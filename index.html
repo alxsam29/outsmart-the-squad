@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ro" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OUTSMART THE SQUAD | Echipa Bright Minds Craiova</title>
+  <!-- Tailwind CSS CDN with typography & custom config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#080C14',
+              card: '#111827',
+              border: '#1F2937',
+              emerald: '#10B981',
+              purple: '#8B5CF6',
+              danger: '#EF4444',
+              gold: '#F59E0B'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #080C14;
+      color: #F3F4F6;
+      font-family: 'Inter', sans-serif;
+    }
+    .glass-card {
+      background: rgba(17, 24, 39, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      transform: translateY(-2px);
+      transition: all 0.2s ease-in-out;
+    }
+    .neon-glow-purple {
+      box-shadow: 0 0 25px -5px rgba(139, 92, 246, 0.3);
+    }
+    .neon-glow-emerald {
+      box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.3);
+    }
+  </style>
+</head>
+<body class="selection:bg-purple-600 selection:text-white">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 glass-card border-b border-gray-800/80 px-4 lg:px-8 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-emerald-400 flex items-center justify-center font-black text-black text-lg">
+          BM
+        </div>
+        <div>
+          <span class="font-extrabold tracking-tight text-white flex items-center gap-2">
+            OUTSMART THE SQUAD
+            <span class="text-xs bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full font-mono">CRAIOVA</span>
+          </span>
+          <span class="text-xs text-gray-400 hidden sm:block">Echipa Bright Minds • Competiție Finanțe Tineri</span>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-300">
+        <a href="#dilema" class="hover:text-purple-400 transition">Dilema Reală</a>
+        <a href="#simulator" class="hover:text-emerald-400 transition flex items-center gap-1">
+          <i data-lucide="gamepad-2" class="w-4 h-4 text-emerald-400"></i> Simulator Live
+        </a>
+        <a href="#buget" class="hover:text-purple-400 transition">Buget 5.000€</a>
+        <a href="#validare" class="hover:text-purple-400 transition">Test Validare & Plan B</a>
+        <a href="#echipa" class="hover:text-purple-400 transition">Echipa</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="#simulator" class="bg-gradient-to-r from-emerald-500 to-teal-400 text-gray-950 font-bold text-xs uppercase tracking-wider px-4 py-2 rounded-lg hover:shadow-lg hover:shadow-emerald-500/20 transition flex items-center gap-1.5">
+          <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i> Testează Simulatorul
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-16 pb-20 overflow-hidden">
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-20 right-10 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 bg-gray-800/80 border border-gray-700/80 px-3 py-1.5 rounded-full text-xs font-mono text-purple-300 mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Proiect de Inovație Financiară • Generat pentru Podiul Național
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight sm:leading-none mb-6">
+        Banii tăi nu sunt biletul tău de <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-emerald-400 bg-clip-text text-transparent">intrare în gașcă</span>.
+      </h1>
+
+      <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-8 font-normal leading-relaxed">
+        Nu un alt curs plictisitor cu definiții economice. Am creat primul <strong>simulator imersiv (Live Action Escape Game)</strong> testat în liceele din Craiova, care îi învață pe adolescenți să oprească „micro-scurgerile” de FOMO și să spună <strong>„NU”</strong> presiunii de grup cu demnitate.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#simulator" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-500 text-white font-bold px-7 py-3.5 rounded-xl transition neon-glow-purple flex items-center justify-center gap-2">
+          <i data-lucide="sparkles" class="w-5 h-5"></i> Joacă Scenariul Interactiv Acum
+        </a>
+        <a href="#buget" class="w-full sm:w-auto glass-card hover:bg-gray-800/80 text-gray-200 border border-gray-700 font-semibold px-6 py-3.5 rounded-xl transition flex items-center justify-center gap-2">
+          <i data-lucide="receipt" class="w-5 h-5 text-emerald-400"></i> Descompunerea Bugetului (5.000€)
+        </a>
+      </div>
+
+      <!-- KEY STATS BAR -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div class="glass-card p-4 rounded-2xl border border-gray-800">
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">68%</div>
+          <div class="text-xs text-gray-400 mt-1">Liceeni pe ZERO în a 3-a săptămână a lunii</div>
+        </div>
+        <div class="glass-card p-4 rounded-2xl border border-gray-800">
+          <div class="text-2xl sm:text-3xl font-extrabold text-purple-400 font-mono">30 LEI</div>
+          <div class="text-xs text-gray-400 mt-1">Irosiți zilnic pe mâncare & energizante la gard</div>
+        </div>
+        <div class="glass-card p-4 rounded-2xl border border-gray-800">
+          <div class="text-2xl sm:text-3xl font-extrabold text-gold font-mono">5.000 €</div>
+          <div class="text-xs text-gray-400 mt-1">Buget complet alocat cu 14% rezervă de risc</div>
+        </div>
+        <div class="glass-card p-4 rounded-2xl border border-gray-800">
+          <div class="text-2xl sm:text-3xl font-extrabold text-pink-400 font-mono">100+</div>
+          <div class="text-xs text-gray-400 mt-1">Elevi impactați în faza pilot din Craiova</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTIUNEA 1: DILEMA REALA IN CRAIOVA -->
+  <section id="dilema" class="py-16 border-t border-gray-900 bg-gray-950/40">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center gap-2 text-xs font-mono text-purple-400 uppercase tracking-widest mb-2">
+        <i data-lucide="search" class="w-4 h-4"></i> Criteriu Jurizare: Relevanța Problemei (25%)
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+        Dilema: Taxa invizibilă a apartenenței la gașcă
+      </h2>
+      <p class="text-gray-400 max-w-3xl mb-10">
+        Tinerii nu au o problemă că nu înțeleg dobânda compusă. Problema lor e emoțională: <strong>dacă toți colegii comandă mâncare de 35 de lei în pauza mare la gardul școlii sau pleacă la Electroputere Mall, este aproape imposibil să refuzi fără să pari zgârcit sau sărac.</strong>
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="glass-card p-6 rounded-2xl border border-gray-800 glass-card-hover">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
+            <i data-lucide="utensils" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Comanda colectivă la gard</h3>
+          <p class="text-sm text-gray-400 mb-4">
+            Pauza mare de 20 min în Craiova: se strâng bani pe hol pentru burgeri/shaorma/pizza. Dacă zici „Nu”, ești exclus din conversație.
+          </p>
+          <div class="text-xs font-mono text-emerald-400 bg-emerald-500/10 py-1.5 px-3 rounded-lg inline-block">
+            Impact: 18 - 28 LEI / zi
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass-card p-6 rounded-2xl border border-gray-800 glass-card-hover">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 mb-4">
+            <i data-lucide="coffee" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Social Drinking (Coffee & Hype)</h3>
+          <p class="text-sm text-gray-400 mb-4">
+            Ice coffee, bubble tea sau energizante ținute în mână ca „accesoriu de statut social” pe holurile liceului, nu din sete reală.
+          </p>
+          <div class="text-xs font-mono text-emerald-400 bg-emerald-500/10 py-1.5 px-3 rounded-lg inline-block">
+            Impact: 14 - 20 LEI / zi
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass-card p-6 rounded-2xl border border-gray-800 glass-card-hover">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4">
+            <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Vineri la Electroputere Mall</h3>
+          <p class="text-sm text-gray-400 mb-4">
+            Food court + cinema + cumpărături impulsive declanșate de reduceri sau „oferte de moment”. Banii pe două săptămâni dispar în 3 ore.
+          </p>
+          <div class="text-xs font-mono text-emerald-400 bg-emerald-500/10 py-1.5 px-3 rounded-lg inline-block">
+            Impact: 60 - 90 LEI / ieșire
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTIUNEA 2: SIMULATORUL INTERACTIV JUCABIL -->
+  <section id="simulator" class="py-20 relative">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full mb-3">
+          <i data-lucide="terminal" class="w-3.5 h-3.5"></i> Prototip Funcțional • Testează Acum
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Simulatorul: Vineri la Mall & Pauza Mare
+        </h2>
+        <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base mt-2">
+          Ia deciziile financiare reale ale unui licean din Craiova. Vezi dacă ajungi la sfârșitul lunii cu banii și reputația intacte!
+        </p>
+      </div>
+
+      <!-- GAME CONSOLE CONTAINER -->
+      <div class="glass-card border border-purple-500/30 rounded-3xl p-6 sm:p-8 relative overflow-hidden neon-glow-purple">
+        
+        <!-- DASHBOARD STATS BAR -->
+        <div class="grid grid-cols-3 gap-3 sm:gap-6 bg-gray-950/70 p-4 rounded-2xl border border-gray-800 mb-6">
+          <div>
+            <div class="text-xs text-gray-400 flex items-center gap-1 font-mono">
+              <i data-lucide="wallet" class="w-3.5 h-3.5 text-emerald-400"></i> BUGET RĂMAS
+            </div>
+            <div id="game-budget" class="text-xl sm:text-2xl font-black text-emerald-400 font-mono">300 LEI</div>
+            <div class="w-full bg-gray-800 h-1.5 rounded-full mt-1.5 overflow-hidden">
+              <div id="bar-budget" class="bg-emerald-400 h-full rounded-full transition-all duration-500" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="text-xs text-gray-400 flex items-center gap-1 font-mono">
+              <i data-lucide="users" class="w-3.5 h-3.5 text-purple-400"></i> REPUTAȚIE GAȘCĂ
+            </div>
+            <div id="game-rep" class="text-xl sm:text-2xl font-black text-purple-400 font-mono">100%</div>
+            <div class="w-full bg-gray-800 h-1.5 rounded-full mt-1.5 overflow-hidden">
+              <div id="bar-rep" class="bg-purple-500 h-full rounded-full transition-all duration-500" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="text-xs text-gray-400 flex items-center gap-1 font-mono">
+              <i data-lucide="zap" class="w-3.5 h-3.5 text-pink-400"></i> NIVEL FOMO
+            </div>
+            <div id="game-fomo" class="text-xl sm:text-2xl font-black text-pink-400 font-mono">20%</div>
+            <div class="w-full bg-gray-800 h-1.5 rounded-full mt-1.5 overflow-hidden">
+              <div id="bar-fomo" class="bg-pink-500 h-full rounded-full transition-all duration-500" style="width: 20%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCENARIO CARD VIEW -->
+        <div id="scenario-box">
+          <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-2">
+            <span id="scenario-step" class="text-purple-400">SCENARIUL 1 DIN 4</span>
+            <span id="scenario-location" class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Gardul Liceului (Pauza Mare)</span>
+          </div>
+
+          <h3 id="scenario-title" class="text-xl sm:text-2xl font-bold text-white mb-3">
+            Comanda de burgeri la gardul școlii
+          </h3>
+
+          <p id="scenario-desc" class="text-gray-300 text-sm sm:text-base mb-6 leading-relaxed bg-gray-900/60 p-4 rounded-xl border border-gray-800/80">
+            E pauza de 20 de minute. Toată gașca se strânge la gardul liceului și pune comanda colectivă de shaorma/burgeri. Te întreabă direct: „Mihai, punem și pentru tine un meniu complet la 32 de lei?”. Tu ai mâncat deja un sendviș de acasă acum o oră.
+          </p>
+
+          <!-- CHOICES -->
+          <div class="space-y-3" id="choices-container">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- END OF GAME RESULTS (Hidden by default) -->
+        <div id="result-box" class="hidden text-center py-6">
+          <div class="w-16 h-16 bg-purple-500/20 text-purple-400 border border-purple-500/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="award" class="w-8 h-8"></i>
+          </div>
+          <h3 id="result-title" class="text-2xl sm:text-3xl font-black text-white mb-2">Profil Financiar Final</h3>
+          <p id="result-desc" class="text-gray-300 text-sm sm:text-base max-w-md mx-auto mb-6"></p>
+
+          <div class="bg-gray-950 p-4 rounded-2xl border border-gray-800 max-w-sm mx-auto mb-6 text-left">
+            <div class="text-xs font-mono text-gray-400 uppercase mb-2">Insignă Câștigată:</div>
+            <div id="result-badge" class="font-bold text-emerald-400 flex items-center gap-2">
+              <i data-lucide="shield-check" class="w-5 h-5"></i> Stăpânul Propriilor Bani
+            </div>
+            <div class="text-xs text-gray-400 mt-2">
+              Ai deblocat replica oficială de buzunar: <em>„Vin cu voi pentru vibe, dar țin bugetul pentru festivalul de la vară.”</em>
+            </div>
+          </div>
+
+          <button onclick="resetGame()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-6 py-2.5 rounded-xl transition font-mono text-sm inline-flex items-center gap-2">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Reia Simularea cu Alte Alegeri
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTIUNEA 3: BUGETUL RIGUROS (5.000€) -->
+  <section id="buget" class="py-16 border-t border-gray-900 bg-gray-950/60">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest mb-2">
+        <i data-lucide="pie-chart" class="w-4 h-4"></i> Criteriu Jurizare: Disciplina Bugetului & Fezabilitate (20%)
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+        Buget de 5.000 €: Fiecare leu monitorizat și justificat
+      </h2>
+      <p class="text-gray-400 max-w-3xl mb-8">
+        Nu am lăsat niciun cost la voia întâmplării. Am inclus un fond strict de siguranță de 14% (Plan B) pentru a garanta că proiectul se finalizează fără sincope financiare.
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm text-gray-300 glass-card rounded-2xl overflow-hidden border border-gray-800">
+          <thead class="bg-gray-900/90 text-xs uppercase font-mono text-gray-400 border-b border-gray-800">
+            <tr>
+              <th class="py-4 px-6">Categorie Cheltuieli</th>
+              <th class="py-4 px-6">Ce acoperă concret</th>
+              <th class="py-4 px-6">Suma (€)</th>
+              <th class="py-4 px-6">% Total</th>
+              <th class="py-4 px-6">Justificare & Prioritizare</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-800/80 font-normal">
+            <tr class="hover:bg-gray-800/40">
+              <td class="py-4 px-6 font-semibold text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span> Scenografie & Recuzită Escape Room
+              </td>
+              <td class="py-4 px-6 text-gray-400">Panouri modulare, 4 seifuri cu cifru mecanic, lumini LED de tensiune, cronometre mari</td>
+              <td class="py-4 px-6 font-mono font-bold text-white">1.350 €</td>
+              <td class="py-4 px-6 font-mono text-purple-400">27%</td>
+              <td class="py-4 px-6 text-xs text-gray-400">Esențial: elimină atmosfera de sală de clasă și face jocul credibil.</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40">
+              <td class="py-4 px-6 font-semibold text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Materiale Tipărite Rezistente
+              </td>
+              <td class="py-4 px-6 text-gray-400">600 x bancnote fizice laminate „LEI FUSE”, 100 x cărți de joc plastifiate, 500 x carduri de portofel</td>
+              <td class="py-4 px-6 font-mono font-bold text-white">650 €</td>
+              <td class="py-4 px-6 font-mono text-emerald-400">13%</td>
+              <td class="py-4 px-6 text-xs text-gray-400">Refolosibile pentru următoarele generații de liceeni (sustenabilitate).</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40">
+              <td class="py-4 px-6 font-semibold text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-gold"></span> Premiul Competiției „Cupa Claselor”
+              </td>
+              <td class="py-4 px-6 text-gray-400">Închiriere sală privată Cinema Electroputere Mall (30 elevi) + premii suport locul 2 și 3</td>
+              <td class="py-4 px-6 font-mono font-bold text-white">1.100 €</td>
+              <td class="py-4 px-6 font-mono text-gold">22%</td>
+              <td class="py-4 px-6 text-xs text-gray-400">Mecanismul psihologic nr. 1 pentru participarea benevolă a 100 de elevi.</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40">
+              <td class="py-4 px-6 font-semibold text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Kit Tehnic & Promovare Locală
+              </td>
+              <td class="py-4 px-6 text-gray-400">2 tablete recondiționate pentru calculul scorurilor live, bannere roll-up, afișe liceu</td>
+              <td class="py-4 px-6 font-mono font-bold text-white">750 €</td>
+              <td class="py-4 px-6 font-mono text-blue-400">15%</td>
+              <td class="py-4 px-6 text-xs text-gray-400">Digitalizează clasamentul claselor în timp real pe holul școlii.</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40">
+              <td class="py-4 px-6 font-semibold text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span> Logistică & Training Voluntari
+              </td>
+              <td class="py-4 px-6 text-gray-400">Materiale training pentru 10 elevi-actori din clasele mari, gustări pe durata celor 5 zile de joc</td>
+              <td class="py-4 px-6 font-mono font-bold text-white">450 €</td>
+              <td class="py-4 px-6 font-mono text-pink-400">9%</td>
+              <td class="py-4 px-6 text-xs text-gray-400">Asigură fluența și respectarea regulilor de joc.</td>
+            </tr>
+            <tr class="bg-gray-900/60 hover:bg-gray-800/60 font-semibold">
+              <td class="py-4 px-6 text-emerald-400 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span> Fond Rezervă Situații Neprevăzute (Plan B)
+              </td>
+              <td class="py-4 px-6 text-gray-400">Buffer financiar blocat pentru variații de preț / reparații recuzită</td>
+              <td class="py-4 px-6 font-mono font-bold text-emerald-400">700 €</td>
+              <td class="py-4 px-6 font-mono text-emerald-400">14%</td>
+              <td class="py-4 px-6 text-xs text-gray-400">Dovada disciplinei financiare cerute de juriu.</td>
+            </tr>
+            <tr class="bg-purple-950/40 font-bold border-t-2 border-purple-500/50">
+              <td class="py-4 px-6 text-white text-base">TOTAL BUGET ALOCAT</td>
+              <td class="py-4 px-6 text-xs font-mono text-purple-300">100% acoperit, zero speculație</td>
+              <td class="py-4 px-6 font-mono text-xl text-emerald-400">5.000 €</td>
+              <td class="py-4 px-6 font-mono text-purple-300">100%</td>
+              <td class="py-4 px-6 text-xs text-gray-300">Cost/Elev: ~45€ pentru o schimbare pe viață</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTIUNEA 4: TESTUL DE VALIDARE & PLANUL B -->
+  <section id="validare" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Testul de Validare -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-gray-800">
+          <div class="text-xs font-mono text-purple-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+            <i data-lucide="check-circle-2" class="w-4 h-4"></i> Răspunsurile Obligatorii
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-6">Testul de Validare a Conceptului</h3>
+
+          <div class="space-y-6">
+            <div class="bg-gray-900/60 p-4 rounded-2xl border border-gray-800">
+              <h4 class="font-bold text-sm text-purple-300 mb-1">
+                1. Aveți 100 de elevi în față. Cum îi convingeți să participe fără note?
+              </h4>
+              <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                Nu le vorbim de educație financiară. Lansăm <strong>„Cupa Claselor la Escape Room”</strong> cu premiul unei seri întregi de cinema privată la Electroputere Mall pentru clasa câștigătoare. Participarea se face exclusiv în găști de 4 prieteni, activând presiunea pozitivă de grup: dacă un elev vrea, își trage automat toți prietenii în sală.
+              </p>
+            </div>
+
+            <div class="bg-gray-900/60 p-4 rounded-2xl border border-gray-800">
+              <h4 class="font-bold text-sm text-emerald-300 mb-1">
+                2. După o lună, cum demonstrați că proiectul chiar i-a ajutat, nu doar le-a plăcut?
+              </h4>
+              <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                Nu măsurăm zâmbete sau păreri. Cerem o probă materială: <strong>Audit la 30 de zile</strong> unde participanții demonstrează existența unui <em>Fond Personal Secret de Urgență de minimum 70 de lei</em> (bani salvați fizic prin refuzarea cumpărăturilor de impuls înregistrate în jurnalul asertiv).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Planul B & Adaptabilitate -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-gray-800">
+          <div class="text-xs font-mono text-gold uppercase tracking-widest mb-2 flex items-center gap-1.5">
+            <i data-lucide="shield-alert" class="w-4 h-4"></i> Criteriu Jurizare: Adaptabilitate la Neprevăzut
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-6">Planul B: Pregătiți pentru Obstacole</h3>
+
+          <div class="space-y-4">
+            <div class="border-l-2 border-red-500 pl-4 py-1">
+              <div class="text-sm font-bold text-white">Risc: Conducerea nu eliberează sala de clasă</div>
+              <div class="text-xs text-gray-400 mt-1">
+                <strong>Plan B:</strong> Trecem pe formatul <em>Pop-up Mobile Desks</em> organizat în curtea liceului sau pe holul mare, scurtând sesiunile de joc la runde rapide de 15 minute.
+              </div>
+            </div>
+
+            <div class="border-l-2 border-yellow-500 pl-4 py-1">
+              <div class="text-sm font-bold text-white">Risc: Elevii sunt timizi și se tem să fie judecați</div>
+              <div class="text-xs text-gray-400 mt-1">
+                <strong>Plan B:</strong> Înscrierea pe porecle de echipă anonime (ex: „Lupii din X-a B”). Scorul arată doar tactica, fără date personale.
+              </div>
+            </div>
+
+            <div class="border-l-2 border-emerald-500 pl-4 py-1">
+              <div class="text-sm font-bold text-white">Risc: Creșterea prețurilor la recuzită / logistică</div>
+              <div class="text-xs text-gray-400 mt-1">
+                <strong>Plan B:</strong> Se activează automat Fondul de Rezervă de 700 € (14% din buget) prevăzut expres în planificare.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTIUNEA 5: CEI 3 INDICATORI & REZULTATE -->
+  <section class="py-16 border-t border-gray-900 bg-gray-950/40">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="text-xs font-mono text-emerald-400 uppercase tracking-widest mb-1">
+          Impact & Măsurare (20%)
+        </div>
+        <h2 class="text-3xl font-extrabold text-white">Cei 3 Indicatori Concreți de Rezultat</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card p-6 rounded-2xl border border-gray-800 text-center">
+          <div class="text-3xl font-black text-emerald-400 font-mono mb-2">≥ 45%</div>
+          <h4 class="font-bold text-white text-base mb-2">Rata Fondului de Rezervă</h4>
+          <p class="text-xs text-gray-400">
+            Procentul de participanți care au demonstrat la 30 de zile economisirea primilor lor 70–100 de lei neatinși.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border border-gray-800 text-center">
+          <div class="text-3xl font-black text-purple-400 font-mono mb-2">-25%</div>
+          <h4 class="font-bold text-white text-base mb-2">Reducerea Cheltuielilor Impulsive</h4>
+          <p class="text-xs text-gray-400">
+            Scăderea declarată a cheltuielilor zilnice la gardul școlii și la cafenele conform jurnalului de 7 zile.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border border-gray-800 text-center">
+          <div class="text-3xl font-black text-pink-400 font-mono mb-2">3.2 ➔ 7.5</div>
+          <h4 class="font-bold text-white text-base mb-2">Scorul de Asertivitate Emoțională</h4>
+          <p class="text-xs text-gray-400">
+            Măsurat pe o scală 1-10: creșterea încrederii de a refuza o cheltuială de grup fără rușine sau anxietate.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTIUNEA 6: ECHIPA BRIGHT MINDS -->
+  <section id="echipa" class="py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="text-xs font-mono text-purple-400 uppercase tracking-widest mb-1">
+          Criteriu Jurizare: Spirit de Echipă & Distribuirea Strategică a Puterii
+        </div>
+        <h2 class="text-3xl font-extrabold text-white">Echipa Bright Minds • Craiova</h2>
+        <p class="text-gray-400 text-sm mt-2">5 elevi cu roluri clar delimitate, fără suprapuneri de responsabilitate.</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <!-- Alex -->
+        <div class="glass-card p-4 rounded-2xl border border-gray-800 text-center">
+          <div class="w-14 h-14 rounded-full bg-purple-600/20 border border-purple-500/40 text-purple-300 font-bold flex items-center justify-center mx-auto mb-3 font-mono text-lg">
+            AP
+          </div>
+          <h4 class="font-bold text-white text-sm">Alex Popa</h4>
+          <div class="text-xs text-purple-400 font-mono mb-2">Lead & Buget</div>
+          <p class="text-[11px] text-gray-400 leading-tight">Monitorizează fiecare leu și gestionează achizițiile de recuzită.</p>
+        </div>
+
+        <!-- Mara -->
+        <div class="glass-card p-4 rounded-2xl border border-gray-800 text-center">
+          <div class="w-14 h-14 rounded-full bg-pink-600/20 border border-pink-500/40 text-pink-300 font-bold flex items-center justify-center mx-auto mb-3 font-mono text-lg">
+            MI
+          </div>
+          <h4 class="font-bold text-white text-sm">Mara Ionescu</h4>
+          <div class="text-xs text-pink-400 font-mono mb-2">Story & Scenariu</div>
+          <p class="text-[11px] text-gray-400 leading-tight">Creează replicile realiste și dinamica psihologică a jocului.</p>
+        </div>
+
+        <!-- Radu -->
+        <div class="glass-card p-4 rounded-2xl border border-gray-800 text-center">
+          <div class="w-14 h-14 rounded-full bg-emerald-600/20 border border-emerald-500/40 text-emerald-300 font-bold flex items-center justify-center mx-auto mb-3 font-mono text-lg">
+            RD
+          </div>
+          <h4 class="font-bold text-white text-sm">Radu Dobre</h4>
+          <div class="text-xs text-emerald-400 font-mono mb-2">Game Design</div>
+          <p class="text-[11px] text-gray-400 leading-tight">A desenat cărțile de joc și prototipul fizic al cardului de buzunar.</p>
+        </div>
+
+        <!-- Daria -->
+        <div class="glass-card p-4 rounded-2xl border border-gray-800 text-center">
+          <div class="w-14 h-14 rounded-full bg-blue-600/20 border border-blue-500/40 text-blue-300 font-bold flex items-center justify-center mx-auto mb-3 font-mono text-lg">
+            DE
+          </div>
+          <h4 class="font-bold text-white text-sm">Daria Enache</h4>
+          <div class="text-xs text-blue-400 font-mono mb-2">Research & Impact</div>
+          <p class="text-[11px] text-gray-400 leading-tight">A cules datele pe 110 colegi și aplică auditul de impact la 30 de zile.</p>
+        </div>
+
+        <!-- Vlad -->
+        <div class="glass-card p-4 rounded-2xl border border-gray-800 text-center col-span-2 sm:col-span-1">
+          <div class="w-14 h-14 rounded-full bg-gold/20 border border-gold/40 text-yellow-300 font-bold flex items-center justify-center mx-auto mb-3 font-mono text-lg">
+            VS
+          </div>
+          <h4 class="font-bold text-white text-sm">Vlad Stancu</h4>
+          <div class="text-xs text-yellow-400 font-mono mb-2">Logistică & Plan B</div>
+          <p class="text-[11px] text-gray-400 leading-tight">Amenajează sala, coordonează voluntarii și aplică scenariile de criză.</p>
+        </div>
+      </div>
+
+      <!-- FINAL CORE BELIEF -->
+      <div class="mt-16 glass-card p-8 rounded-3xl border border-purple-500/30 text-center max-w-3xl mx-auto relative overflow-hidden">
+        <div class="text-xs font-mono text-purple-400 uppercase tracking-widest mb-2">Întrebarea Finală a Concursului</div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">
+          „Dacă proiectul vostru ar putea schimba un singur lucru în felul în care tinerii se raportează la bani, care ar fi acela?”
+        </h3>
+        <p class="text-lg text-emerald-300 font-medium italic">
+          „Să transforme refuzul financiar dintr-un motiv de rușine într-o insignă de respect, maturitate și putere personală.”
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-gray-900 py-10 text-center text-xs text-gray-500 font-mono">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>© 2026 Echipa Bright Minds • Craiova. Creat pentru Competiția Națională de Finanțe.</div>
+      <div class="text-gray-400">Deployable on Vercel / GitHub Pages • Zero dependencies</div>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE SIMULATOR LOGIC -->
+  <script>
+    // Lucide Icons init
+    lucide.createIcons();
+
+    // Game state
+    const scenarios = [
+      {
+        step: "SCENARIUL 1 DIN 4",
+        location: "Gardul Liceului • Pauza Mare",
+        title: "Comanda de burgeri la gardul școlii",
+        desc: "E pauza de 20 de minute. Toată gașca se strânge la gardul liceului și pune comanda colectivă de fast-food. Te întreabă direct: „Mihai, punem și pentru tine un meniu complet la 32 de lei?”. Tu ai mâncat deja un sendviș de acasă acum o oră.",
+        choices: [
+          {
+            text: "Cedezi presiunii: „Hai pune și pentru mine, să nu fiu singurul fără”",
+            badge: "Conformism",
+            cost: 32,
+            repDelta: +5,
+            fomoDelta: -10,
+            feedback: "Ai mâncat pe săturate, dar ai aruncat 32 de lei fără motiv. Bugetul tău a suferit o lovitură prematură."
+          },
+          {
+            text: "Refuzi stânjenit: „Nu am bani, sunt lefter...” și te dai un pas în spate",
+            badge: "Izolare / Rușine",
+            cost: 0,
+            repDelta: -25,
+            fomoDelta: +30,
+            feedback: "Ai salvat banii, dar te-ai simțit izolat și rușinat de prietenii tăi."
+          },
+          {
+            text: "OUTSMART (Asertiv): „Vin cu voi la gard la povești, dar am mâncat deja. Păstrez banii de bilet la festival!”",
+            badge: "Asertivitate Pro",
+            cost: 0,
+            repDelta: +15,
+            fomoDelta: -15,
+            feedback: "Genial! Ai fost prezent în grup, ai salvat banii și ai arătat că ai priorități clare. Colegii te respectă!"
+          }
+        ]
+      },
+      {
+        step: "SCENARIUL 2 DIN 4",
+        location: "Electroputere Mall • Vineri ora 16:00",
+        title: "Hype la Adidași de Firmă (Reducere „Limitată”)",
+        desc: "Sunteți la mall. Un magazin are un flash-sale la adidași: reduși de la 450 la 210 lei doar astăzi. Un coleg îți spune: „Ești nebun dacă nu îi iei, nu mai prinzi prețul ăsta niciodată!”. Tu ai deja o pereche bună luată acum 2 luni.",
+        choices: [
+          {
+            text: "Cumperi pe loc impulsiv: „Trăiești doar o dată, găsesc eu o soluție săptămâna viitoare!”",
+            badge: "Impulsivitate",
+            cost: 210,
+            repDelta: +10,
+            fomoDelta: -20,
+            feedback: "Ai adidași noi, dar ești practic pe zero cu 10 zile înainte de alocație. Tensiunea financiară crește uriaș."
+          },
+          {
+            text: "Aplici regula jocului „Pauza de 24 de ore”: „Dacă îmi mai plac și mâine seară la fel de mult, mă întorc să-i iau.”",
+            badge: "Controlul Impulsului",
+            cost: 0,
+            repDelta: +10,
+            fomoDelta: -10,
+            feedback: "Maturitate financiară maximă! 90% din dorințele de impuls dispar după 24 de ore de somn."
+          },
+          {
+            text: "Împrumuți 50 de lei de la coleg ca să-i iei: „Îți dau eu banii când intră bursa”",
+            badge: "Capcana Datoriei",
+            cost: 210,
+            repDelta: -15,
+            fomoDelta: +25,
+            feedback: "Greșeală majoră! Te-ai îndatorat pentru un bun de statut, creând tensiuni în prietenie."
+          }
+        ]
+      },
+      {
+        step: "SCENARIUL 3 DIN 4",
+        location: "Grupul de WhatsApp al Clasei",
+        title: "Cadoul scump pentru un coleg oarecare",
+        desc: "Pe grupul clasei se decide: „Strângem toți câte 50 de lei pentru cadoul lui Andrei”. Tu abia dacă ai vorbit cu Andrei 3 propoziții tot anul, iar 50 lei reprezintă jumătate din ce mai ai în buzunar.",
+        choices: [
+          {
+            text: "Plătești tăcut cei 50 de lei fără să comentezi",
+            badge: "Conformism pasiv",
+            cost: 50,
+            repDelta: 0,
+            fomoDelta: +10,
+            feedback: "Ai plătit ca să eviți cearta, dar ai pierdut 50 de lei de care aveai nevoie reală."
+          },
+          {
+            text: "Propui o alternativă realistă pe grup: „50 lei de persoană înseamnă 1.500 lei, e exagerat. Haideți să punem 20 lei și îi luăm ceva fain și util.”",
+            badge: "Leadership Financiar",
+            cost: 20,
+            repDelta: +20,
+            fomoDelta: -10,
+            feedback: "Bravo! Încă 10 colegi au răsuflat ușurați și ți-au dat dreptate în secret."
+          },
+          {
+            text: "Ieși de pe grup nervos și zici că nu dai nimic",
+            badge: "Conflict",
+            cost: 0,
+            repDelta: -30,
+            fomoDelta: +30,
+            feedback: "Ai salvat banii, dar ai creat o dramă inutilă în clasă."
+          }
+        ]
+      },
+      {
+        step: "SCENARIUL 4 DIN 4",
+        location: "Real-Life Emergency • Dimineața de Luni",
+        title: "Urgența dură: Ți s-a spart ecranul la telefon",
+        desc: "Luni dimineața îți scapă telefonul pe scările liceului. Ecranul e negru. Înlocuirea de urgență la un service costă 80 de lei ca să mai poți vedea orarul și apelurile părinților.",
+        choices: [
+          {
+            text: "Scoți banii din Fondul de Urgență păstrat pe parcursul simulării",
+            badge: "Salvat de Disciplină",
+            cost: 80,
+            repDelta: +10,
+            fomoDelta: -20,
+            feedback: "Iată pentru ce ai refuzat burgerii și impulsurile! Ai rezolvat problema instant fără să te milogești la nimeni."
+          },
+          {
+            text: "Dacă nu ai 80 de lei: te împrumuți stânjenit sau primești ceartă acasă",
+            badge: "Faliment Social",
+            cost: 80,
+            repDelta: -20,
+            fomoDelta: +40,
+            feedback: "Când nu ai bani puși deoparte, orice incident banal devine o criză majoră de viață."
+          }
+        ]
+      }
+    ];
+
+    let currentStep = 0;
+    let budget = 300;
+    let reputation = 100;
+    let fomo = 20;
+
+    function renderScenario() {
+      const s = scenarios[currentStep];
+      document.getElementById('scenario-step').innerText = s.step;
+      document.getElementById('scenario-location').innerHTML = `<i data-lucide="map-pin" class="w-3 h-3"></i> ${s.location}`;
+      document.getElementById('scenario-title').innerText = s.title;
+      document.getElementById('scenario-desc').innerText = s.desc;
+
+      const container = document.getElementById('choices-container');
+      container.innerHTML = '';
+
+      s.choices.forEach((choice, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-4 rounded-xl bg-gray-900/80 hover:bg-purple-950/40 border border-gray-800 hover:border-purple-500/50 transition flex items-start justify-between gap-3 group";
+        btn.onclick = () => handleChoice(choice);
+        btn.innerHTML = `
+          <div>
+            <div class="text-xs font-mono text-purple-400 font-semibold mb-1 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> ${choice.badge}
+            </div>
+            <div class="text-sm font-medium text-gray-200 group-hover:text-white">${choice.text}</div>
+          </div>
+          <div class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded shrink-0">
+            ${choice.cost > 0 ? '-' + choice.cost + ' LEI' : '0 LEI'}
+          </div>
+        `;
+        container.appendChild(btn);
+      });
+
+      lucide.createIcons();
+    }
+
+    function handleChoice(choice) {
+      budget = Math.max(0, budget - choice.cost);
+      reputation = Math.min(100, Math.max(0, reputation + choice.repDelta));
+      fomo = Math.min(100, Math.max(0, fomo + choice.fomoDelta));
+
+      updateDashboard();
+
+      currentStep++;
+      if (currentStep < scenarios.length) {
+        renderScenario();
+      } else {
+        showResults();
+      }
+    }
+
+    function updateDashboard() {
+      document.getElementById('game-budget').innerText = budget + ' LEI';
+      document.getElementById('bar-budget').style.width = (budget / 300 * 100) + '%';
+      if (budget < 50) {
+        document.getElementById('game-budget').className = "text-xl sm:text-2xl font-black text-red-500 font-mono animate-pulse";
+        document.getElementById('bar-budget').className = "bg-red-500 h-full rounded-full transition-all duration-500";
+      }
+
+      document.getElementById('game-rep').innerText = reputation + '%';
+      document.getElementById('bar-rep').style.width = reputation + '%';
+
+      document.getElementById('game-fomo').innerText = fomo + '%';
+      document.getElementById('bar-fomo').style.width = fomo + '%';
+    }
+
+    function showResults() {
+      document.getElementById('scenario-box').classList.add('hidden');
+      document.getElementById('result-box').classList.remove('hidden');
+
+      const title = document.getElementById('result-title');
+      const desc = document.getElementById('result-desc');
+      const badge = document.getElementById('result-badge');
+
+      if (budget >= 80 && reputation >= 70) {
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+        title.innerText = "Stăpânul Propriilor Bani (Grad Elită)";
+        desc.innerText = `Felicitări! Ai terminat simularea cu ${budget} LEI în buzunar și o reputație de ${reputation}% în gașcă. Ai demonstrat că nu trebuie să fii sclavul FOMO-ului ca să fii respectat.`;
+        badge.innerHTML = `<i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i> Campion al Asertivității Financiare`;
+        badge.className = "font-bold text-emerald-400 flex items-center gap-2";
+      } else if (budget < 50) {
+        title.innerText = "Victima Presiunii de Grup";
+        desc.innerText = `Ai rămas cu doar ${budget} LEI înainte de finalul lunii. Te-ai conformat prea des la ce doreau ceilalți și ai plătit un cost personal imens.`;
+        badge.innerHTML = `<i data-lucide="alert-triangle" class="w-5 h-5 text-red-400"></i> În pericol de Faliment Social`;
+        badge.className = "font-bold text-red-400 flex items-center gap-2";
+      } else {
+        title.innerText = "Supraviețuitor Prudent";
+        desc.innerText = `Ai salvat o parte din bani (${budget} LEI), dar încă ești vulnerabil la deciziile de moment.`;
+        badge.innerHTML = `<i data-lucide="check" class="w-5 h-5 text-yellow-400"></i> În Curs de Dezvoltare`;
+        badge.className = "font-bold text-yellow-400 flex items-center gap-2";
+      }
+      lucide.createIcons();
+    }
+
+    function resetGame() {
+      currentStep = 0;
+      budget = 300;
+      reputation = 100;
+      fomo = 20;
+      updateDashboard();
+      document.getElementById('game-budget').className = "text-xl sm:text-2xl font-black text-emerald-400 font-mono";
+      document.getElementById('bar-budget').className = "bg-emerald-400 h-full rounded-full transition-all duration-500";
+      document.getElementById('result-box').classList.add('hidden');
+      document.getElementById('scenario-box').classList.remove('hidden');
+      renderScenario();
+    }
+
+    // Initial render
+    renderScenario();
+  </script>
+</body>
+</html>
+
